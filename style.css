@@ -65,14 +65,14 @@ header nav ul li a {
 
 main {
     width: 100%;
-    width: auto;
+    height: auto;
     overflow: hidden;
     background-color: #393939;
 }
 
 .section-1 {
     width: 100%;
-    height: 92vh;
+    height: auto;
 }
 
 .section-1-body {
@@ -679,12 +679,15 @@ footer {
 }
 
 .video-overlay {
+    
     position: absolute;
-    top: 35%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 2;
+    
+   
 }
 
 .company-name {
@@ -700,9 +703,9 @@ footer {
 .subtitle {
     font-size: 1.5em;
     width: 110%;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     opacity: 0.6; /* Even lower opacity for the subtitle */
-    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+    /* text-shadow: 2px 2px 5px rgb(0, 0, 0); */
 }
 
 
@@ -783,7 +786,6 @@ footer {
     transition: opacity 0.4s ease-in-out;
 }
 
-
 .service-card h3 {
     color: white;
     font-size: 1em;
@@ -799,7 +801,6 @@ footer {
     text-align: center;
     margin-top: 10px;
 }
-
 .service-card:hover h3{
     color: black;
 }
@@ -919,4 +920,11 @@ footer {
     background-color: #004ac181;
 }
 
-
+.section-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+   
+}
