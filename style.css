@@ -800,6 +800,13 @@ footer {
     margin-top: 10px;
 }
 
+.service-card:hover h3{
+    color: black;
+}
+.service-card:hover p{
+    color: yellowgreen;
+}
+
 /* Styling the Why QDS Section */
 .why-qds-section {
     width: 90%;
