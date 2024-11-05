@@ -779,13 +779,10 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.4s ease-in-out;
 }
 
-.service-card:hover .overlay {
-    opacity: 1;
-}
 
 .service-card h3 {
     color: white;
