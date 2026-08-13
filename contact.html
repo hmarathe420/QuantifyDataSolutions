@@ -3,77 +3,1216 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QDS | Home</title>
-    <link rel="stylesheet" href="style.css?v=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Contact Quantify Data Solutions for data annotation, sports analysis, AI data, analytics and software development projects."
+    >
+
+    <meta
+        name="author"
+        content="Quantify Data Solutions"
+    >
+
+    <title>
+        Contact | Quantify Data Solutions
+    </title>
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         MAIN STYLESHEET
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
 
+
 <body>
-    <header>
-        <div class="HeaderBody">
-            <div class="logo animate__animated animate__fadeInDown">Quantify Data Solutions</div>
-            <nav>
-                <div class="Menu-Icons">
-                    <div id="OpenMenu" onclick="OpenNavMenu();"><i class="fa-solid fa-bars"></i></div>
-                    <div id="CloseMenu" onclick="CloseNavMenu();"><i class="fa-solid fa-xmark"></i></div>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header
+        class="site-header"
+        id="siteHeader"
+    >
+
+        <div class="container nav-container">
+
+
+            <!-- BRAND -->
+
+            <a
+                href="index.html"
+                class="brand"
+                aria-label="Quantify Data Solutions Home"
+            >
+
+                <div class="brand-logo">
+
+                    <img
+                        src="assets/images/logo.png"
+                        alt="Quantify Data Solutions"
+                    >
+
                 </div>
-                <ul class="NavItems animate__animated animate__fadeInDown">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
+
+                <div class="brand-name">
+                    Quantify
+                    <span>Data Solutions</span>
+                </div>
+
+            </a>
+
+
+            <!-- MOBILE MENU -->
+
+            <button
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+            >
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+
+            <!-- NAVIGATION -->
+
+            <nav
+                class="main-navigation"
+                id="mainNavigation"
+                aria-label="Main navigation"
+            >
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="services.html">
+                    Services
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a
+                    href="contact.html"
+                    class="active"
+                >
+                    Contact
+                </a>
+
+                <a
+                    href="#contact-form"
+                    class="nav-contact-button"
+                >
+                    Let's Talk
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
 
             </nav>
-            
+
         </div>
+
     </header>
-    <section class="section-4">
-        <div class="section-4-body">
-            <h2>Contact Us</h2>
-            <form action="index.html" method="" class="contactform" id="ContactUs">
-                <div class="inputfeildgroup">
-                    <div class="feilds">
-                        <label>Full Name</label>
-                        <input type="text" required>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             CONTACT HERO
+        ================================================== -->
+
+        <section class="hero-section contact-hero">
+
+            <div class="hero-background-grid"></div>
+
+            <div class="hero-glow hero-glow-one"></div>
+
+            <div class="hero-glow hero-glow-two"></div>
+
+
+            <div class="container hero-container">
+
+
+                <!-- HERO CONTENT -->
+
+                <div class="hero-content reveal">
+
+                    <div class="eyebrow">
+
+                        <span class="eyebrow-line"></span>
+
+                        GET IN TOUCH
+
                     </div>
-                    <div class="feilds">
-                        <label>Email</label>
-                        <input type="email" required>
+
+
+                    <h1>
+
+                        Let's turn your
+                        <span class="gradient-text">
+                            data challenge
+                        </span>
+                        into a solution.
+
+                    </h1>
+
+
+                    <p class="hero-description">
+
+                        Tell us what you're working on,
+                        what data you need processed, or
+                        what you're trying to build.
+                        Our team will get back to you
+                        to understand your requirements.
+
+                    </p>
+
+
+                    <div class="hero-actions">
+
+                        <a
+                            href="mailto:info@quantifydatasolutions.in"
+                            class="button button-primary"
+                        >
+
+                            Email Our Team
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
                     </div>
+
                 </div>
-                <div class="feilds">
-                    <label>Message</label>
-                    <textarea rows="3" required></textarea>
+
+
+
+                <!-- CONTACT VISUAL -->
+
+                <div class="hero-visual reveal reveal-delay">
+
+                    <div class="contact-visual-card">
+
+
+                        <div class="contact-visual-header">
+
+                            <span class="status-dot"></span>
+
+                            <span>
+                                AVAILABLE FOR PROJECTS
+                            </span>
+
+                        </div>
+
+
+                        <div class="contact-visual-icon">
+
+                            <i class="fa-solid fa-comments"></i>
+
+                        </div>
+
+
+                        <h3>
+                            Let's discuss your requirements.
+                        </h3>
+
+
+                        <p>
+
+                            Whether you need a dedicated team,
+                            a one-time project, or a long-term
+                            data operation, we can discuss the
+                            right approach.
+
+                        </p>
+
+
+                        <div class="contact-visual-line"></div>
+
+
+                        <div class="contact-mini-item">
+
+                            <i class="fa-solid fa-envelope"></i>
+
+                            <span>
+                                info@quantifydatasolutions.in
+                            </span>
+
+                        </div>
+
+
+                        <div class="contact-mini-item">
+
+                            <i class="fa-solid fa-location-dot"></i>
+
+                            <span>
+                                Nashik, Maharashtra, India
+                            </span>
+
+                        </div>
+
+                    </div>
+
                 </div>
-                <div class="contactform-buttons">
-                    <button>
-                        <p>Submit</p>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </section>
-    <footer>
-        <div class="footer-body">
-            <div class="socialmedia">
-                <h4>Follow On Social Media</h4>
-                <ul>
-                    <li><a href="#"><i class="fa-regular fa-envelope"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-phone"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-whatsapp"></i></a></li>
-                </ul>
+
             </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CONTACT INFORMATION + FORM
+        ================================================== -->
+
+        <section
+            class="section"
+            id="contact-form"
+        >
+
+            <div class="container">
+
+
+                <div class="contact-grid">
+
+
+                    <!-- =================================================
+                         CONTACT INFORMATION
+                    ================================================== -->
+
+                    <div class="contact-information reveal">
+
+
+                        <div class="section-label">
+                            CONTACT DETAILS
+                        </div>
+
+
+                        <h2>
+
+                            Start a
+                            <span>
+                                conversation.
+                            </span>
+
+                        </h2>
+
+
+                        <p>
+
+                            Share a little information about your
+                            project and we'll help you determine
+                            the best way forward.
+
+                        </p>
+
+
+
+                        <!-- EMAIL -->
+
+                        <a
+                            href="mailto:info@quantifydatasolutions.in"
+                            class="contact-info-card"
+                        >
+
+                            <div class="contact-info-icon">
+
+                                <i class="fa-solid fa-envelope"></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    EMAIL
+                                </span>
+
+                                <strong>
+                                    info@quantifydatasolutions.in
+                                </strong>
+
+                            </div>
+
+                        </a>
+
+
+
+                        <!-- LOCATION -->
+
+                        <div class="contact-info-card">
+
+                            <div class="contact-info-icon">
+
+                                <i class="fa-solid fa-location-dot"></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    LOCATION
+                                </span>
+
+                                <strong>
+                                    Nashik, Maharashtra, India
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- BUSINESS -->
+
+                        <div class="contact-info-card">
+
+                            <div class="contact-info-icon">
+
+                                <i class="fa-solid fa-building"></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    BUSINESS
+                                </span>
+
+                                <strong>
+                                    Quantify Data Solutions
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- RESPONSE -->
+
+                        <div class="contact-response">
+
+                            <i class="fa-solid fa-bolt"></i>
+
+                            <div>
+
+                                <strong>
+                                    Tell us what you need.
+                                </strong>
+
+                                <p>
+
+                                    Include your project type,
+                                    approximate volume, timeline
+                                    and any specific requirements
+                                    you already know.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         FORM
+                    ================================================== -->
+
+                    <div class="contact-form-wrapper reveal reveal-delay">
+
+                        <div class="form-header">
+
+                            <span class="section-label">
+                                PROJECT ENQUIRY
+                            </span>
+
+                            <h2>
+                                Tell us about your project.
+                            </h2>
+
+                            <p>
+                                We'll review your requirements
+                                and get back to you.
+                            </p>
+
+                        </div>
+
+
+                        <!--
+
+                            IMPORTANT:
+
+                            This form is intentionally configured
+                            with mailto as a simple static-site
+                            solution.
+
+                            Later, we can connect it to:
+                            - Formspree
+                            - Web3Forms
+                            - Resend
+                            - Your own PHP backend
+                            - A CRM
+
+                        -->
+
+                        <form
+                            id="projectContactForm"
+                            action="mailto:info@quantifydatasolutions.in"
+                            method="post"
+                            enctype="text/plain"
+                        >
+
+
+                            <!-- NAME -->
+
+                            <div class="form-row">
+
+
+                                <div class="form-group">
+
+                                    <label for="name">
+                                        Full Name
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="Name"
+                                        placeholder="Your name"
+                                        autocomplete="name"
+                                        required
+                                    >
+
+                                </div>
+
+
+
+                                <!-- EMAIL -->
+
+                                <div class="form-group">
+
+                                    <label for="email">
+                                        Work Email
+                                    </label>
+
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="Email"
+                                        placeholder="you@company.com"
+                                        autocomplete="email"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- COMPANY -->
+
+                            <div class="form-row">
+
+
+                                <div class="form-group">
+
+                                    <label for="company">
+                                        Company
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="company"
+                                        name="Company"
+                                        placeholder="Company name"
+                                        autocomplete="organization"
+                                    >
+
+                                </div>
+
+
+
+                                <!-- PHONE -->
+
+                                <div class="form-group">
+
+                                    <label for="phone">
+                                        Phone
+                                    </label>
+
+                                    <input
+                                        type="tel"
+                                        id="phone"
+                                        name="Phone"
+                                        placeholder="+91 XXXXX XXXXX"
+                                        autocomplete="tel"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- SERVICE -->
+
+                            <div class="form-group">
+
+                                <label for="service">
+                                    What can we help with?
+                                </label>
+
+                                <select
+                                    id="service"
+                                    name="Service"
+                                    required
+                                >
+
+                                    <option
+                                        value=""
+                                        selected
+                                        disabled
+                                    >
+                                        Select a service
+                                    </option>
+
+                                    <option value="Sports Data & Analysis">
+                                        Sports Data & Analysis
+                                    </option>
+
+                                    <option value="Data Annotation">
+                                        Data Annotation
+                                    </option>
+
+                                    <option value="Data Analytics & ML">
+                                        Data Analytics & ML
+                                    </option>
+
+                                    <option value="Software Development">
+                                        Software Development
+                                    </option>
+
+                                    <option value="Healthcare Data">
+                                        Healthcare Data
+                                    </option>
+
+                                    <option value="Automotive AI Data">
+                                        Automotive AI Data
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- PROJECT SIZE -->
+
+                            <div class="form-group">
+
+                                <label for="projectSize">
+                                    Project Size
+                                </label>
+
+                                <select
+                                    id="projectSize"
+                                    name="Project Size"
+                                >
+
+                                    <option
+                                        value=""
+                                        selected
+                                        disabled
+                                    >
+                                        Select an option
+                                    </option>
+
+                                    <option value="Pilot / Small Project">
+                                        Pilot / Small Project
+                                    </option>
+
+                                    <option value="Medium Project">
+                                        Medium Project
+                                    </option>
+
+                                    <option value="Large / Ongoing Project">
+                                        Large / Ongoing Project
+                                    </option>
+
+                                    <option value="Not Sure">
+                                        Not Sure Yet
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- MESSAGE -->
+
+                            <div class="form-group">
+
+                                <label for="message">
+                                    Project Details
+                                </label>
+
+                                <textarea
+                                    id="message"
+                                    name="Message"
+                                    rows="6"
+                                    placeholder="Tell us about your project, data volume, requirements, timeline, or anything else that would help us understand your needs."
+                                    required
+                                ></textarea>
+
+                            </div>
+
+
+
+                            <!-- SUBMIT -->
+
+                            <button
+                                type="submit"
+                                class="button button-primary form-submit"
+                            >
+
+                                Send Project Enquiry
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </button>
+
+
+                            <p class="form-note">
+
+                                By submitting this form,
+                                you agree to be contacted by
+                                Quantify Data Solutions regarding
+                                your enquiry.
+
+                            </p>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SERVICES CTA
+        ================================================== -->
+
+        <section class="section stats-section">
+
+            <div class="container">
+
+
+                <div class="center-heading reveal">
+
+                    <div class="section-label">
+                        WHAT WE CAN HELP WITH
+                    </div>
+
+
+                    <h2>
+
+                        One team.
+                        <span>
+                            Multiple capabilities.
+                        </span>
+
+                    </h2>
+
+
+                    <p>
+
+                        Explore our services to understand
+                        how Quantify Data Solutions can support
+                        your project.
+
+                    </p>
+
+                </div>
+
+
+                <div class="services-grid">
+
+
+                    <!-- SPORTS -->
+
+                    <article class="service-card reveal">
+
+                        <div class="service-card-top">
+
+                            <span class="service-number">
+                                01
+                            </span>
+
+                            <div class="service-icon">
+
+                                <i class="fa-solid fa-futbol"></i>
+
+                            </div>
+
+                        </div>
+
+
+                        <h3>
+                            Sports Data
+                        </h3>
+
+
+                        <p>
+
+                            Match analysis, event tagging,
+                            tactical data and sports intelligence.
+
+                        </p>
+
+
+                        <a
+                            href="services.html#sports"
+                            class="service-card-link"
+                        >
+
+                            Learn More
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </article>
+
+
+
+                    <!-- ANNOTATION -->
+
+                    <article class="service-card reveal reveal-delay">
+
+                        <div class="service-card-top">
+
+                            <span class="service-number">
+                                02
+                            </span>
+
+                            <div class="service-icon">
+
+                                <i class="fa-solid fa-tags"></i>
+
+                            </div>
+
+                        </div>
+
+
+                        <h3>
+                            Data Annotation
+                        </h3>
+
+
+                        <p>
+
+                            Image, video, text and specialized
+                            AI training datasets.
+
+                        </p>
+
+
+                        <a
+                            href="services.html#annotation"
+                            class="service-card-link"
+                        >
+
+                            Learn More
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </article>
+
+
+
+                    <!-- ANALYTICS -->
+
+                    <article class="service-card reveal">
+
+                        <div class="service-card-top">
+
+                            <span class="service-number">
+                                03
+                            </span>
+
+                            <div class="service-icon">
+
+                                <i class="fa-solid fa-chart-line"></i>
+
+                            </div>
+
+                        </div>
+
+
+                        <h3>
+                            Data & Analytics
+                        </h3>
+
+
+                        <p>
+
+                            Analytics, machine learning,
+                            visualization and reporting.
+
+                        </p>
+
+
+                        <a
+                            href="services.html#analytics"
+                            class="service-card-link"
+                        >
+
+                            Learn More
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </article>
+
+
+
+                    <!-- SOFTWARE -->
+
+                    <article class="service-card reveal reveal-delay">
+
+                        <div class="service-card-top">
+
+                            <span class="service-number">
+                                04
+                            </span>
+
+                            <div class="service-icon">
+
+                                <i class="fa-solid fa-code"></i>
+
+                            </div>
+
+                        </div>
+
+
+                        <h3>
+                            Software
+                        </h3>
+
+
+                        <p>
+
+                            Web applications, dashboards,
+                            automation and APIs.
+
+                        </p>
+
+
+                        <a
+                            href="services.html#software"
+                            class="service-card-link"
+                        >
+
+                            Learn More
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FINAL CTA
+        ================================================== -->
+
+        <section class="cta-section">
+
+            <div class="container">
+
+                <div class="cta-card reveal">
+
+
+                    <div>
+
+                        <h2>
+                            Have a project in mind?
+                        </h2>
+
+                        <p>
+
+                            Let's discuss your requirements
+                            and find the right solution together.
+
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="mailto:info@quantifydatasolutions.in"
+                        class="button button-white"
+                    >
+
+                        Email Us
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-grid">
+
+
+            <!-- COMPANY -->
+
+            <div class="footer-company">
+
+                <a
+                    href="index.html"
+                    class="brand footer-brand"
+                >
+
+                    <div class="brand-logo">
+
+                        <img
+                            src="assets/images/logo.png"
+                            alt="Quantify Data Solutions"
+                        >
+
+                    </div>
+
+                    <div class="brand-name">
+                        Quantify
+                        <span>Data Solutions</span>
+                    </div>
+
+                </a>
+
+
+                <p>
+
+                    Professional data, AI, sports analysis,
+                    annotation and technology solutions
+                    designed to help businesses turn data
+                    into intelligence.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- COMPANY LINKS -->
+
+            <div class="footer-column">
+
+                <h4>
+                    Company
+                </h4>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="services.html">
+                    Services
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+
+            <!-- SERVICES -->
+
+            <div class="footer-column">
+
+                <h4>
+                    Services
+                </h4>
+
+                <a href="services.html#sports">
+                    Sports Analysis
+                </a>
+
+                <a href="services.html#annotation">
+                    Data Annotation
+                </a>
+
+                <a href="services.html#analytics">
+                    Data Analytics
+                </a>
+
+                <a href="services.html#software">
+                    Software Development
+                </a>
+
+            </div>
+
+
+
+            <!-- CONTACT -->
+
+            <div class="footer-column">
+
+                <h4>
+                    Contact
+                </h4>
+
+                <a href="mailto:info@quantifydatasolutions.in">
+                    info@quantifydatasolutions.in
+                </a>
+
+                <span>
+                    Nashik, Maharashtra, India
+                </span>
+
+            </div>
+
         </div>
-        <p class="footercopyright">&copy;2024 QuntifyDataSolution.Com</p>
+
+
+
+        <div class="container footer-bottom">
+
+            <span>
+
+                ©
+                <span id="currentYear"></span>
+                Quantify Data Solutions.
+                All rights reserved.
+
+            </span>
+
+
+            <span>
+                Data • AI • Sports • Technology
+            </span>
+
+        </div>
 
     </footer>
-    <script src="index.js">
-    </script>
-    </body>
-    </html>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        src="index.js"
+        defer
+    ></script>
+
+
+</body>
+
+</html>
