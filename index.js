@@ -1,44 +1,212 @@
 /* =========================================================
    QUANTIFY DATA SOLUTIONS
-   Global Website JavaScript
-   Version 2.0
-========================================================= */
+   GLOBAL WEBSITE JAVASCRIPT
+   ========================================================= */
+
+"use strict";
+
+
+/* =========================================================
+   01. DOM READY
+   ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =====================================================
-       01. ELEMENTS
-    ===================================================== */
+    initMobileNavigation();
 
-    const header = document.getElementById("siteHeader");
+    initHeaderScroll();
 
-    const mobileMenuButton =
+    initRevealAnimations();
+
+    initCounters();
+
+    initContactForm();
+
+    initSmoothScrolling();
+
+    initCurrentYear();
+
+});
+
+
+/* =========================================================
+   02. MOBILE NAVIGATION
+   ========================================================= */
+
+function initMobileNavigation() {
+
+    const menuButton =
         document.getElementById("mobileMenuButton");
 
-    const mainNavigation =
+    const navigation =
         document.getElementById("mainNavigation");
 
-    const currentYear =
-        document.getElementById("currentYear");
-
-
-    /* =====================================================
-       02. CURRENT YEAR
-    ===================================================== */
-
-    if (currentYear) {
-        currentYear.textContent =
-            new Date().getFullYear();
+    if (!menuButton || !navigation) {
+        return;
     }
 
 
-    /* =====================================================
-       03. STICKY HEADER
-    ===================================================== */
+    menuButton.addEventListener("click", () => {
 
-    const handleHeaderScroll = () => {
+        const isOpen =
+            navigation.classList.toggle("open");
 
-        if (!header) return;
+        menuButton.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
+
+
+        const icon =
+            menuButton.querySelector("i");
+
+        if (icon) {
+
+            icon.classList.toggle(
+                "fa-bars",
+                !isOpen
+            );
+
+            icon.classList.toggle(
+                "fa-xmark",
+                isOpen
+            );
+
+        }
+
+    });
+
+
+    /* Close menu after clicking a link */
+
+    navigation
+        .querySelectorAll("a")
+        .forEach((link) => {
+
+            link.addEventListener("click", () => {
+
+                navigation.classList.remove("open");
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+
+                const icon =
+                    menuButton.querySelector("i");
+
+                if (icon) {
+
+                    icon.classList.remove(
+                        "fa-xmark"
+                    );
+
+                    icon.classList.add(
+                        "fa-bars"
+                    );
+
+                }
+
+            });
+
+        });
+
+
+    /* Close when clicking outside */
+
+    document.addEventListener("click", (event) => {
+
+        const clickedInsideNavigation =
+            navigation.contains(event.target);
+
+        const clickedMenuButton =
+            menuButton.contains(event.target);
+
+        if (
+            !clickedInsideNavigation &&
+            !clickedMenuButton
+        ) {
+
+            navigation.classList.remove("open");
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+
+            const icon =
+                menuButton.querySelector("i");
+
+            if (icon) {
+
+                icon.classList.remove(
+                    "fa-xmark"
+                );
+
+                icon.classList.add(
+                    "fa-bars"
+                );
+
+            }
+
+        }
+
+    });
+
+
+    /* Close menu with Escape */
+
+    document.addEventListener("keydown", (event) => {
+
+        if (event.key !== "Escape") {
+            return;
+        }
+
+        navigation.classList.remove("open");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+
+        const icon =
+            menuButton.querySelector("i");
+
+        if (icon) {
+
+            icon.classList.remove(
+                "fa-xmark"
+            );
+
+            icon.classList.add(
+                "fa-bars"
+            );
+
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   03. HEADER SCROLL EFFECT
+   ========================================================= */
+
+function initHeaderScroll() {
+
+    const header =
+        document.getElementById("siteHeader");
+
+    if (!header) {
+        return;
+    }
+
+
+    const updateHeader = () => {
 
         if (window.scrollY > 20) {
 
@@ -52,441 +220,341 @@ document.addEventListener("DOMContentLoaded", () => {
 
     };
 
-    handleHeaderScroll();
+
+    updateHeader();
+
 
     window.addEventListener(
         "scroll",
-        handleHeaderScroll,
-        { passive: true }
+        updateHeader,
+        {
+            passive: true
+        }
     );
 
-
-    /* =====================================================
-       04. MOBILE NAVIGATION
-    ===================================================== */
-
-    if (
-        mobileMenuButton &&
-        mainNavigation
-    ) {
-
-        mobileMenuButton.addEventListener(
-            "click",
-            () => {
-
-                const isOpen =
-                    mainNavigation.classList.toggle("open");
-
-                mobileMenuButton.setAttribute(
-                    "aria-expanded",
-                    String(isOpen)
-                );
+}
 
 
-                const icon =
-                    mobileMenuButton.querySelector("i");
+/* =========================================================
+   04. REVEAL ANIMATIONS
+   ========================================================= */
 
-                if (icon) {
+function initRevealAnimations() {
 
-                    icon.classList.toggle(
-                        "fa-bars",
-                        !isOpen
-                    );
-
-                    icon.classList.toggle(
-                        "fa-xmark",
-                        isOpen
-                    );
-
-                }
-
-            }
-        );
-
-
-        /* Close menu after clicking a link */
-
-        const navigationLinks =
-            mainNavigation.querySelectorAll("a");
-
-        navigationLinks.forEach(link => {
-
-            link.addEventListener(
-                "click",
-                () => {
-
-                    mainNavigation.classList.remove(
-                        "open"
-                    );
-
-                    mobileMenuButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-
-                    const icon =
-                        mobileMenuButton.querySelector("i");
-
-                    if (icon) {
-
-                        icon.classList.remove(
-                            "fa-xmark"
-                        );
-
-                        icon.classList.add(
-                            "fa-bars"
-                        );
-
-                    }
-
-                }
-            );
-
-        });
-
-
-        /* Close when clicking outside */
-
-        document.addEventListener(
-            "click",
-            event => {
-
-                const clickedInsideNavigation =
-                    mainNavigation.contains(event.target);
-
-                const clickedMenuButton =
-                    mobileMenuButton.contains(event.target);
-
-
-                if (
-                    !clickedInsideNavigation &&
-                    !clickedMenuButton
-                ) {
-
-                    mainNavigation.classList.remove(
-                        "open"
-                    );
-
-                    mobileMenuButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-
-                    const icon =
-                        mobileMenuButton.querySelector("i");
-
-                    if (icon) {
-
-                        icon.classList.remove(
-                            "fa-xmark"
-                        );
-
-                        icon.classList.add(
-                            "fa-bars"
-                        );
-
-                    }
-
-                }
-
-            }
-        );
-
-
-        /* Close mobile menu when resizing */
-
-        window.addEventListener(
-            "resize",
-            () => {
-
-                if (window.innerWidth > 760) {
-
-                    mainNavigation.classList.remove(
-                        "open"
-                    );
-
-                    mobileMenuButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-
-                    const icon =
-                        mobileMenuButton.querySelector("i");
-
-                    if (icon) {
-
-                        icon.classList.remove(
-                            "fa-xmark"
-                        );
-
-                        icon.classList.add(
-                            "fa-bars"
-                        );
-
-                    }
-
-                }
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       05. SCROLL REVEAL
-    ===================================================== */
-
-    const revealElements =
+    const elements =
         document.querySelectorAll(".reveal");
 
-
-    if (revealElements.length) {
-
-        const revealObserver =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(entry => {
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            entry.target.classList.add(
-                                "revealed"
-                            );
-
-                            revealObserver.unobserve(
-                                entry.target
-                            );
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.12,
-                    rootMargin: "0px 0px -40px 0px"
-                }
-            );
+    if (!elements.length) {
+        return;
+    }
 
 
-        revealElements.forEach(
-            element => {
+    /*
+     * If IntersectionObserver is not available,
+     * display everything immediately.
+     */
 
-                revealObserver.observe(element);
+    if (!("IntersectionObserver" in window)) {
 
+        elements.forEach((element) => {
+            element.classList.add("visible");
+        });
+
+        return;
+    }
+
+
+    const observer =
+        new IntersectionObserver(
+            (entries, observerInstance) => {
+
+                entries.forEach((entry) => {
+
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+
+                    observerInstance.unobserve(
+                        entry.target
+                    );
+
+                });
+
+            },
+            {
+                threshold: 0.12,
+
+                rootMargin:
+                    "0px 0px -40px 0px"
             }
         );
 
-    }
 
+    elements.forEach((element) => {
 
-    /* =====================================================
-       06. NUMBER COUNTERS
-    ===================================================== */
-
-    const counters =
-        document.querySelectorAll(".counter");
-
-
-    const animateCounter = counter => {
-
-        const target =
-            Number(
-                counter.getAttribute(
-                    "data-target"
-                )
-            );
-
-
-        if (
-            Number.isNaN(target)
-        ) {
-            return;
-        }
-
-
-        const duration = 1800;
-
-        const startTime =
-            performance.now();
-
-
-        const updateCounter =
-            currentTime => {
-
-                const elapsed =
-                    currentTime - startTime;
-
-
-                const progress =
-                    Math.min(
-                        elapsed / duration,
-                        1
-                    );
-
-
-                /*
-                 * Ease-out animation
-                 */
-
-                const easedProgress =
-                    1 -
-                    Math.pow(
-                        1 - progress,
-                        3
-                    );
-
-
-                const currentValue =
-                    Math.floor(
-                        easedProgress * target
-                    );
-
-
-                counter.textContent =
-                    currentValue.toLocaleString();
-
-
-                if (progress < 1) {
-
-                    requestAnimationFrame(
-                        updateCounter
-                    );
-
-                } else {
-
-                    counter.textContent =
-                        target.toLocaleString();
-
-                }
-
-            };
-
-
-        requestAnimationFrame(
-            updateCounter
-        );
-
-    };
-
-
-    if (counters.length) {
-
-        const counterObserver =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(entry => {
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            animateCounter(
-                                entry.target
-                            );
-
-                            counterObserver.unobserve(
-                                entry.target
-                            );
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.4
-                }
-            );
-
-
-        counters.forEach(counter => {
-
-            counterObserver.observe(
-                counter
-            );
-
-        });
-
-    }
-
-
-    /* =====================================================
-       07. ACTIVE NAVIGATION
-    ===================================================== */
-
-    const navigationLinks =
-        document.querySelectorAll(
-            ".main-navigation > a"
-        );
-
-
-    const currentPage =
-        window.location.pathname
-            .split("/")
-            .pop() || "index.html";
-
-
-    navigationLinks.forEach(link => {
-
-        const href =
-            link.getAttribute("href");
-
-
-        if (
-            href === currentPage
-        ) {
-
-            navigationLinks.forEach(
-                item =>
-                    item.classList.remove(
-                        "active"
-                    )
-            );
-
-
-            link.classList.add(
-                "active"
-            );
-
-        }
+        observer.observe(element);
 
     });
 
+}
 
-    /* =====================================================
-       08. SMOOTH ANCHOR SCROLLING
-    ===================================================== */
 
-    const anchorLinks =
+/* =========================================================
+   05. NUMBER COUNTERS
+   ========================================================= */
+
+function initCounters() {
+
+    const counters =
+        document.querySelectorAll(
+            "[data-counter]"
+        );
+
+    if (!counters.length) {
+        return;
+    }
+
+
+    if (!("IntersectionObserver" in window)) {
+
+        counters.forEach((counter) => {
+
+            counter.textContent =
+                counter.dataset.counter;
+
+        });
+
+        return;
+    }
+
+
+    const observer =
+        new IntersectionObserver(
+            (entries, observerInstance) => {
+
+                entries.forEach((entry) => {
+
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+
+                    animateCounter(
+                        entry.target
+                    );
+
+
+                    observerInstance.unobserve(
+                        entry.target
+                    );
+
+                });
+
+            },
+            {
+                threshold: 0.6
+            }
+        );
+
+
+    counters.forEach((counter) => {
+
+        observer.observe(counter);
+
+    });
+
+}
+
+
+/* =========================================================
+   COUNTER ANIMATION
+   ========================================================= */
+
+function animateCounter(element) {
+
+    const target =
+        Number(element.dataset.counter);
+
+    if (
+        Number.isNaN(target) ||
+        target < 0
+    ) {
+        return;
+    }
+
+
+    const duration =
+        Number(element.dataset.duration) ||
+        1800;
+
+
+    const suffix =
+        element.dataset.suffix || "";
+
+
+    const prefix =
+        element.dataset.prefix || "";
+
+
+    const startTime =
+        performance.now();
+
+
+    function updateCounter(currentTime) {
+
+        const elapsed =
+            currentTime - startTime;
+
+
+        const progress =
+            Math.min(
+                elapsed / duration,
+                1
+            );
+
+
+        /*
+         * Ease-out animation.
+         */
+
+        const easedProgress =
+            1 -
+            Math.pow(
+                1 - progress,
+                3
+            );
+
+
+        const currentValue =
+            Math.floor(
+                easedProgress * target
+            );
+
+
+        element.textContent =
+            prefix +
+            formatNumber(currentValue) +
+            suffix;
+
+
+        if (progress < 1) {
+
+            requestAnimationFrame(
+                updateCounter
+            );
+
+        } else {
+
+            element.textContent =
+                prefix +
+                formatNumber(target) +
+                suffix;
+
+        }
+
+    }
+
+
+    requestAnimationFrame(
+        updateCounter
+    );
+
+}
+
+
+/* =========================================================
+   FORMAT NUMBERS
+   ========================================================= */
+
+function formatNumber(number) {
+
+    return new Intl.NumberFormat(
+        "en-IN"
+    ).format(number);
+
+}
+
+
+/* =========================================================
+   06. CONTACT FORM
+   ========================================================= */
+
+function initContactForm() {
+
+    const form =
+        document.getElementById(
+            "projectContactForm"
+        );
+
+    if (!form) {
+        return;
+    }
+
+
+    form.addEventListener(
+        "submit",
+        (event) => {
+
+            /*
+             * The current form uses mailto:
+             * so the browser/email client can
+             * handle the submission.
+             *
+             * We only validate here and do not
+             * interfere with the default action.
+             */
+
+            if (!form.checkValidity()) {
+
+                event.preventDefault();
+
+                form.reportValidity();
+
+                return;
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   07. SMOOTH INTERNAL SCROLLING
+   ========================================================= */
+
+function initSmoothScrolling() {
+
+    const links =
         document.querySelectorAll(
             'a[href^="#"]'
         );
 
+    if (!links.length) {
+        return;
+    }
 
-    anchorLinks.forEach(link => {
+
+    links.forEach((link) => {
 
         link.addEventListener(
             "click",
-            event => {
+            (event) => {
 
-                const targetId =
-                    link.getAttribute(
-                        "href"
-                    );
+                const href =
+                    link.getAttribute("href");
 
 
                 if (
-                    !targetId ||
-                    targetId === "#"
+                    !href ||
+                    href === "#"
                 ) {
                     return;
                 }
@@ -494,7 +562,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const target =
                     document.querySelector(
-                        targetId
+                        href
                     );
 
 
@@ -506,6 +574,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 event.preventDefault();
 
 
+                const header =
+                    document.querySelector(
+                        ".site-header"
+                    );
+
+
                 const headerHeight =
                     header
                         ? header.offsetHeight
@@ -513,9 +587,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 const targetPosition =
-                    target.getBoundingClientRect().top +
+                    target.getBoundingClientRect()
+                        .top +
                     window.scrollY -
-                    headerHeight;
+                    headerHeight -
+                    10;
 
 
                 window.scrollTo({
@@ -531,10 +607,99 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+}
 
-    /* =====================================================
-       09. IMAGE LOAD OPTIMIZATION
-    ===================================================== */
+
+/* =========================================================
+   08. CURRENT YEAR
+   ========================================================= */
+
+function initCurrentYear() {
+
+    const yearElement =
+        document.getElementById(
+            "currentYear"
+        );
+
+    if (!yearElement) {
+        return;
+    }
+
+
+    yearElement.textContent =
+        new Date().getFullYear();
+
+}
+
+
+/* =========================================================
+   09. ACTIVE NAVIGATION
+   ========================================================= */
+
+function initActiveNavigation() {
+
+    const currentPage =
+        window.location.pathname
+            .split("/")
+            .pop()
+            .toLowerCase();
+
+
+    const navigationLinks =
+        document.querySelectorAll(
+            ".main-navigation a"
+        );
+
+
+    if (!navigationLinks.length) {
+        return;
+    }
+
+
+    navigationLinks.forEach((link) => {
+
+        const href =
+            link
+                .getAttribute("href")
+                ?.split("#")[0]
+                .toLowerCase();
+
+
+        if (
+            !href ||
+            href === ""
+        ) {
+            return;
+        }
+
+
+        const normalizedCurrentPage =
+            currentPage || "index.html";
+
+
+        const normalizedHref =
+            href || "index.html";
+
+
+        if (
+            normalizedCurrentPage ===
+            normalizedHref
+        ) {
+
+            link.classList.add("active");
+
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   10. IMAGE ERROR HANDLING
+   ========================================================= */
+
+function initImageFallbacks() {
 
     const images =
         document.querySelectorAll(
@@ -542,96 +707,35 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-    images.forEach(image => {
+    images.forEach((image) => {
 
-        /*
-         * Avoid applying lazy loading
-         * to the main hero image.
-         */
+        image.addEventListener(
+            "error",
+            () => {
 
-        const isHeroImage =
-            image.closest(
-                ".hero-image-wrapper"
-            );
+                image.classList.add(
+                    "image-error"
+                );
 
-
-        if (!isHeroImage) {
-
-            image.loading = "lazy";
-
-        }
-
-        image.decoding = "async";
+            }
+        );
 
     });
 
-
-    /* =====================================================
-       10. KEYBOARD ACCESSIBILITY
-    ===================================================== */
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (
-                event.key === "Escape" &&
-                mainNavigation &&
-                mainNavigation.classList.contains(
-                    "open"
-                )
-            ) {
-
-                mainNavigation.classList.remove(
-                    "open"
-                );
+}
 
 
-                if (mobileMenuButton) {
+/* =========================================================
+   11. INITIALIZE EXTRA FEATURES
+   ========================================================= */
 
-                    mobileMenuButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
+        initActiveNavigation();
 
-                    const icon =
-                        mobileMenuButton.querySelector(
-                            "i"
-                        );
+        initImageFallbacks();
 
-
-                    if (icon) {
-
-                        icon.classList.remove(
-                            "fa-xmark"
-                        );
-
-                        icon.classList.add(
-                            "fa-bars"
-                        );
-
-                    }
-
-                }
-
-            }
-
-        }
-    );
-
-
-    /* =====================================================
-       11. PAGE READY
-    ===================================================== */
-
-    document.documentElement.classList.add(
-        "js-ready"
-    );
-
-
-    console.log(
-        "Quantify Data Solutions website initialized."
-    );
-
-});
+    }
+);
