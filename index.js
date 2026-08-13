@@ -1,13 +1,11 @@
 /* =========================================================
    QUANTIFY DATA SOLUTIONS
-   GLOBAL WEBSITE JAVASCRIPT
+   index.js
    ========================================================= */
-
-"use strict";
 
 
 /* =========================================================
-   01. DOM READY
+   DOM READY
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -20,9 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     initCounters();
 
-    initContactForm();
-
-    initSmoothScrolling();
+    initSmoothNavigation();
 
     initCurrentYear();
 
@@ -30,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* =========================================================
-   02. MOBILE NAVIGATION
+   MOBILE NAVIGATION
    ========================================================= */
 
 function initMobileNavigation() {
@@ -60,16 +56,39 @@ function initMobileNavigation() {
         const icon =
             menuButton.querySelector("i");
 
-        if (icon) {
+        if (!icon) {
+            return;
+        }
 
-            icon.classList.toggle(
-                "fa-bars",
-                !isOpen
+
+        if (isOpen) {
+
+            icon.classList.remove(
+                "fa-bars"
             );
 
-            icon.classList.toggle(
-                "fa-xmark",
-                isOpen
+            icon.classList.add(
+                "fa-xmark"
+            );
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Close navigation menu"
+            );
+
+        } else {
+
+            icon.classList.remove(
+                "fa-xmark"
+            );
+
+            icon.classList.add(
+                "fa-bars"
+            );
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Open navigation menu"
             );
 
         }
@@ -77,43 +96,49 @@ function initMobileNavigation() {
     });
 
 
-    /* Close menu after clicking a link */
+    /*
+     * Close menu when a navigation link is clicked.
+     */
 
-    navigation
-        .querySelectorAll("a")
-        .forEach((link) => {
+    const navigationLinks =
+        navigation.querySelectorAll("a");
 
-            link.addEventListener("click", () => {
 
-                navigation.classList.remove("open");
+    navigationLinks.forEach((link) => {
 
-                menuButton.setAttribute(
-                    "aria-expanded",
-                    "false"
+        link.addEventListener("click", () => {
+
+            navigation.classList.remove("open");
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+
+            const icon =
+                menuButton.querySelector("i");
+
+            if (icon) {
+
+                icon.classList.remove(
+                    "fa-xmark"
                 );
 
+                icon.classList.add(
+                    "fa-bars"
+                );
 
-                const icon =
-                    menuButton.querySelector("i");
-
-                if (icon) {
-
-                    icon.classList.remove(
-                        "fa-xmark"
-                    );
-
-                    icon.classList.add(
-                        "fa-bars"
-                    );
-
-                }
-
-            });
+            }
 
         });
 
+    });
 
-    /* Close when clicking outside */
+
+    /*
+     * Close the menu when clicking outside it.
+     */
 
     document.addEventListener("click", (event) => {
 
@@ -123,9 +148,11 @@ function initMobileNavigation() {
         const clickedMenuButton =
             menuButton.contains(event.target);
 
+
         if (
             !clickedInsideNavigation &&
-            !clickedMenuButton
+            !clickedMenuButton &&
+            navigation.classList.contains("open")
         ) {
 
             navigation.classList.remove("open");
@@ -156,44 +183,51 @@ function initMobileNavigation() {
     });
 
 
-    /* Close menu with Escape */
+    /*
+     * Reset mobile menu when returning to desktop.
+     */
 
-    document.addEventListener("keydown", (event) => {
+    window.addEventListener(
+        "resize",
+        () => {
 
-        if (event.key !== "Escape") {
-            return;
+            if (window.innerWidth > 820) {
+
+                navigation.classList.remove(
+                    "open"
+                );
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+
+                const icon =
+                    menuButton.querySelector("i");
+
+                if (icon) {
+
+                    icon.classList.remove(
+                        "fa-xmark"
+                    );
+
+                    icon.classList.add(
+                        "fa-bars"
+                    );
+
+                }
+
+            }
+
         }
-
-        navigation.classList.remove("open");
-
-        menuButton.setAttribute(
-            "aria-expanded",
-            "false"
-        );
-
-
-        const icon =
-            menuButton.querySelector("i");
-
-        if (icon) {
-
-            icon.classList.remove(
-                "fa-xmark"
-            );
-
-            icon.classList.add(
-                "fa-bars"
-            );
-
-        }
-
-    });
+    );
 
 }
 
 
 /* =========================================================
-   03. HEADER SCROLL EFFECT
+   HEADER SCROLL EFFECT
    ========================================================= */
 
 function initHeaderScroll() {
@@ -206,19 +240,24 @@ function initHeaderScroll() {
     }
 
 
-    const updateHeader = () => {
+    const updateHeader =
+        () => {
 
-        if (window.scrollY > 20) {
+            if (window.scrollY > 20) {
 
-            header.classList.add("scrolled");
+                header.classList.add(
+                    "scrolled"
+                );
 
-        } else {
+            } else {
 
-            header.classList.remove("scrolled");
+                header.classList.remove(
+                    "scrolled"
+                );
 
-        }
+            }
 
-    };
+        };
 
 
     updateHeader();
@@ -236,7 +275,7 @@ function initHeaderScroll() {
 
 
 /* =========================================================
-   04. REVEAL ANIMATIONS
+   SCROLL REVEAL ANIMATIONS
    ========================================================= */
 
 function initRevealAnimations() {
@@ -244,20 +283,25 @@ function initRevealAnimations() {
     const elements =
         document.querySelectorAll(".reveal");
 
+
     if (!elements.length) {
         return;
     }
 
 
     /*
-     * If IntersectionObserver is not available,
-     * display everything immediately.
+     * Fallback for browsers without
+     * IntersectionObserver.
      */
 
     if (!("IntersectionObserver" in window)) {
 
         elements.forEach((element) => {
-            element.classList.add("visible");
+
+            element.classList.add(
+                "visible"
+            );
+
         });
 
         return;
@@ -306,7 +350,7 @@ function initRevealAnimations() {
 
 
 /* =========================================================
-   05. NUMBER COUNTERS
+   NUMBER COUNTERS
    ========================================================= */
 
 function initCounters() {
@@ -316,7 +360,36 @@ function initCounters() {
             "[data-counter]"
         );
 
+
     if (!counters.length) {
+        return;
+    }
+
+
+    /*
+     * Respect users who prefer
+     * reduced motion.
+     */
+
+    const prefersReducedMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+
+    if (prefersReducedMotion) {
+
+        counters.forEach((counter) => {
+
+            setCounterValue(
+                counter,
+                Number(
+                    counter.dataset.counter
+                )
+            );
+
+        });
+
         return;
     }
 
@@ -325,8 +398,7 @@ function initCounters() {
 
         counters.forEach((counter) => {
 
-            counter.textContent =
-                counter.dataset.counter;
+            animateCounter(counter);
 
         });
 
@@ -334,9 +406,9 @@ function initCounters() {
     }
 
 
-    const observer =
+    const counterObserver =
         new IntersectionObserver(
-            (entries, observerInstance) => {
+            (entries, observer) => {
 
                 entries.forEach((entry) => {
 
@@ -350,7 +422,7 @@ function initCounters() {
                     );
 
 
-                    observerInstance.unobserve(
+                    observer.unobserve(
                         entry.target
                     );
 
@@ -358,14 +430,14 @@ function initCounters() {
 
             },
             {
-                threshold: 0.6
+                threshold: 0.5
             }
         );
 
 
     counters.forEach((counter) => {
 
-        observer.observe(counter);
+        counterObserver.observe(counter);
 
     });
 
@@ -379,34 +451,36 @@ function initCounters() {
 function animateCounter(element) {
 
     const target =
-        Number(element.dataset.counter);
+        Number(
+            element.dataset.counter
+        );
+
 
     if (
         Number.isNaN(target) ||
         target < 0
     ) {
+
         return;
+
     }
-
-
-    const duration =
-        Number(element.dataset.duration) ||
-        1800;
 
 
     const suffix =
         element.dataset.suffix || "";
 
 
-    const prefix =
-        element.dataset.prefix || "";
+    const duration =
+        target > 10000
+            ? 1800
+            : 1200;
 
 
     const startTime =
         performance.now();
 
 
-    function updateCounter(currentTime) {
+    function update(currentTime) {
 
         const elapsed =
             currentTime - startTime;
@@ -420,7 +494,7 @@ function animateCounter(element) {
 
 
         /*
-         * Ease-out animation.
+         * Ease-out curve.
          */
 
         const easedProgress =
@@ -437,39 +511,63 @@ function animateCounter(element) {
             );
 
 
-        element.textContent =
-            prefix +
-            formatNumber(currentValue) +
-            suffix;
+        setCounterValue(
+            element,
+            currentValue,
+            suffix
+        );
 
 
         if (progress < 1) {
 
             requestAnimationFrame(
-                updateCounter
+                update
             );
 
         } else {
 
-            element.textContent =
-                prefix +
-                formatNumber(target) +
-                suffix;
+            setCounterValue(
+                element,
+                target,
+                suffix
+            );
 
         }
 
     }
 
 
-    requestAnimationFrame(
-        updateCounter
-    );
+    requestAnimationFrame(update);
 
 }
 
 
 /* =========================================================
-   FORMAT NUMBERS
+   SET COUNTER VALUE
+   ========================================================= */
+
+function setCounterValue(
+    element,
+    value,
+    suffix = null
+) {
+
+    if (suffix === null) {
+
+        suffix =
+            element.dataset.suffix || "";
+
+    }
+
+
+    element.textContent =
+        formatNumber(value) + suffix;
+
+}
+
+
+/* =========================================================
+   NUMBER FORMATTER
    ========================================================= */
 
 function formatNumber(number) {
@@ -482,64 +580,15 @@ function formatNumber(number) {
 
 
 /* =========================================================
-   06. CONTACT FORM
+   SMOOTH NAVIGATION
    ========================================================= */
 
-function initContactForm() {
-
-    const form =
-        document.getElementById(
-            "projectContactForm"
-        );
-
-    if (!form) {
-        return;
-    }
-
-
-    form.addEventListener(
-        "submit",
-        (event) => {
-
-            /*
-             * The current form uses mailto:
-             * so the browser/email client can
-             * handle the submission.
-             *
-             * We only validate here and do not
-             * interfere with the default action.
-             */
-
-            if (!form.checkValidity()) {
-
-                event.preventDefault();
-
-                form.reportValidity();
-
-                return;
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   07. SMOOTH INTERNAL SCROLLING
-   ========================================================= */
-
-function initSmoothScrolling() {
+function initSmoothNavigation() {
 
     const links =
         document.querySelectorAll(
             'a[href^="#"]'
         );
-
-    if (!links.length) {
-        return;
-    }
 
 
     links.forEach((link) => {
@@ -556,7 +605,9 @@ function initSmoothScrolling() {
                     !href ||
                     href === "#"
                 ) {
+
                     return;
+
                 }
 
 
@@ -567,40 +618,38 @@ function initSmoothScrolling() {
 
 
                 if (!target) {
+
                     return;
+
                 }
 
 
                 event.preventDefault();
 
 
-                const header =
-                    document.querySelector(
-                        ".site-header"
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+
+                /*
+                 * Update URL without causing
+                 * another page jump.
+                 */
+
+                if (
+                    window.history &&
+                    window.history.replaceState
+                ) {
+
+                    window.history.replaceState(
+                        null,
+                        "",
+                        href
                     );
 
-
-                const headerHeight =
-                    header
-                        ? header.offsetHeight
-                        : 0;
-
-
-                const targetPosition =
-                    target.getBoundingClientRect()
-                        .top +
-                    window.scrollY -
-                    headerHeight -
-                    10;
-
-
-                window.scrollTo({
-
-                    top: targetPosition,
-
-                    behavior: "smooth"
-
-                });
+                }
 
             }
         );
@@ -611,7 +660,7 @@ function initSmoothScrolling() {
 
 
 /* =========================================================
-   08. CURRENT YEAR
+   CURRENT YEAR
    ========================================================= */
 
 function initCurrentYear() {
@@ -620,6 +669,7 @@ function initCurrentYear() {
         document.getElementById(
             "currentYear"
         );
+
 
     if (!yearElement) {
         return;
@@ -633,109 +683,144 @@ function initCurrentYear() {
 
 
 /* =========================================================
-   09. ACTIVE NAVIGATION
+   ACTIVE NAVIGATION SECTION
    ========================================================= */
 
 function initActiveNavigation() {
 
-    const currentPage =
-        window.location.pathname
-            .split("/")
-            .pop()
-            .toLowerCase();
+    const sections =
+        document.querySelectorAll(
+            "main section[id]"
+        );
 
 
     const navigationLinks =
         document.querySelectorAll(
-            ".main-navigation a"
+            '.main-navigation a[href^="#"]'
         );
 
 
-    if (!navigationLinks.length) {
+    if (
+        !sections.length ||
+        !navigationLinks.length
+    ) {
+
         return;
+
     }
 
 
-    navigationLinks.forEach((link) => {
+    const sectionObserver =
+        new IntersectionObserver(
+            (entries) => {
 
-        const href =
-            link
-                .getAttribute("href")
-                ?.split("#")[0]
-                .toLowerCase();
+                entries.forEach((entry) => {
 
-
-        if (
-            !href ||
-            href === ""
-        ) {
-            return;
-        }
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
 
 
-        const normalizedCurrentPage =
-            currentPage || "index.html";
+                    const currentId =
+                        entry.target.getAttribute(
+                            "id"
+                        );
 
 
-        const normalizedHref =
-            href || "index.html";
+                    navigationLinks.forEach(
+                        (link) => {
+
+                            const href =
+                                link.getAttribute(
+                                    "href"
+                                );
 
 
-        if (
-            normalizedCurrentPage ===
-            normalizedHref
-        ) {
+                            if (
+                                href ===
+                                `#${currentId}`
+                            ) {
 
-            link.classList.add("active");
+                                link.classList.add(
+                                    "active"
+                                );
 
-        }
+                            } else {
 
-    });
+                                link.classList.remove(
+                                    "active"
+                                );
 
-}
+                            }
 
+                        }
+                    );
 
-/* =========================================================
-   10. IMAGE ERROR HANDLING
-   ========================================================= */
+                });
 
-function initImageFallbacks() {
-
-    const images =
-        document.querySelectorAll(
-            "img"
-        );
-
-
-    images.forEach((image) => {
-
-        image.addEventListener(
-            "error",
-            () => {
-
-                image.classList.add(
-                    "image-error"
-                );
-
+            },
+            {
+                rootMargin:
+                    "-30% 0px -60% 0px"
             }
         );
 
+
+    sections.forEach((section) => {
+
+        sectionObserver.observe(
+            section
+        );
+
     });
 
 }
 
 
 /* =========================================================
-   11. INITIALIZE EXTRA FEATURES
+   INITIALIZE ACTIVE NAVIGATION
+   ========================================================= */
+
+initActiveNavigation();
+
+
+/* =========================================================
+   PAGE VISIBILITY
    ========================================================= */
 
 document.addEventListener(
-    "DOMContentLoaded",
+    "visibilitychange",
     () => {
 
-        initActiveNavigation();
+        if (
+            document.visibilityState ===
+            "visible"
+        ) {
 
-        initImageFallbacks();
+            document.documentElement
+                .classList.add(
+                    "page-visible"
+                );
+
+        }
 
     }
 );
+
+
+/* =========================================================
+   EXTERNAL LINK SAFETY
+   ========================================================= */
+
+document
+    .querySelectorAll(
+        'a[target="_blank"]'
+    )
+    .forEach((link) => {
+
+        link.setAttribute(
+            "rel",
+            "noopener noreferrer"
+        );
+
+    });
