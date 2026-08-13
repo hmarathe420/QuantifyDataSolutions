@@ -226,7 +226,9 @@ p {
         backdrop-filter var(--transition);
 
 }
-
+.story-paragraph {
+    margin-top: 15px;
+}
 
 .site-header.scrolled {
 
