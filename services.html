@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -11,12 +11,12 @@
 
     <meta
         name="description"
-        content="Quantify Data Solutions provides professional data annotation, sports analysis, AI data services, software development, and data analytics solutions."
+        content="Explore Quantify Data Solutions services including sports data annotation, video annotation, AI and machine learning data, data processing and software solutions."
     >
 
     <meta
         name="keywords"
-        content="data annotation, sports data, sports analysis, AI data, machine learning, computer vision, software development, Quantify Data Solutions"
+        content="sports data annotation, football data annotation, video annotation, AI data, machine learning data, data processing, software solutions"
     >
 
     <meta
@@ -24,14 +24,17 @@
         content="Quantify Data Solutions"
     >
 
+    <meta
+        name="theme-color"
+        content="#081421"
+    >
+
     <title>
         Services | Quantify Data Solutions
     </title>
 
 
-    <!-- =====================================================
-         GOOGLE FONTS
-    ====================================================== -->
+    <!-- Fonts -->
 
     <link
         rel="preconnect"
@@ -45,24 +48,22 @@
     >
 
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet"
     >
 
 
-    <!-- =====================================================
-         FONT AWESOME
-    ====================================================== -->
+    <!-- Icons -->
 
     <link
         rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
     >
 
 
-    <!-- =====================================================
-         MAIN STYLESHEET
-    ====================================================== -->
+    <!-- Main stylesheet -->
 
     <link
         rel="stylesheet"
@@ -75,1589 +76,1406 @@
 <body>
 
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
+<!-- =========================================================
+     HEADER
+     ========================================================= -->
 
-    <header
-        class="site-header"
-        id="siteHeader"
-    >
+<header
+    class="site-header"
+    id="siteHeader"
+>
 
-        <div class="container nav-container">
+    <div class="container nav-container">
 
 
-            <!-- BRAND -->
+        <a
+            href="index.html"
+            class="brand"
+            aria-label="Quantify Data Solutions home"
+        >
 
-            <a
-                href="index.html"
-                class="brand"
-                aria-label="Quantify Data Solutions Home"
+            <img
+                src="Images/QDS Logo.png"
+                alt="Quantify Data Solutions logo"
+                class="brand-logo"
             >
 
-                <div class="brand-logo">
+            <div class="brand-name">
 
-                    <img
-                        src="assets/images/logo.png"
-                        alt="Quantify Data Solutions"
-                    >
+                Quantify
 
-                </div>
+                <span>
+                    DATA SOLUTIONS
+                </span>
 
-                <div class="brand-name">
-                    Quantify
-                    <span>Data Solutions</span>
-                </div>
+            </div>
 
+        </a>
+
+
+        <button
+            type="button"
+            class="mobile-menu-button"
+            id="mobileMenuButton"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mainNavigation"
+        >
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+
+        <nav
+            class="main-navigation"
+            id="mainNavigation"
+            aria-label="Main navigation"
+        >
+
+            <a href="index.html">
+                Home
             </a>
 
+            <a href="about.html">
+                About
+            </a>
 
-            <!-- MOBILE MENU BUTTON -->
-
-            <button
-                class="mobile-menu-button"
-                id="mobileMenuButton"
-                type="button"
-                aria-label="Open navigation menu"
-                aria-expanded="false"
+            <a
+                href="services.html"
+                class="active"
             >
+                Services
+            </a>
 
-                <i class="fa-solid fa-bars"></i>
+            <a href="index.html#industries">
+                Industries
+            </a>
 
-            </button>
+            <a href="index.html#process">
+                Process
+            </a>
 
-
-            <!-- NAVIGATION -->
-
-            <nav
-                class="main-navigation"
-                id="mainNavigation"
-                aria-label="Main navigation"
+            <a
+                href="contact.html"
+                class="nav-contact-button"
             >
+                Let's Talk
+            </a>
 
-                <a href="index.html">
-                    Home
-                </a>
+        </nav>
 
-                <a
-                    href="services.html"
-                    class="active"
-                >
-                    Services
-                </a>
+    </div>
 
-                <a href="about.html">
-                    About
-                </a>
+</header>
 
-                <a href="contact.html">
-                    Contact
-                </a>
+
+<!-- =========================================================
+     PAGE HERO
+     ========================================================= -->
+
+<main>
+
+
+<section class="hero-section">
+
+    <div class="container hero-container">
+
+
+        <div class="hero-content reveal">
+
+            <div class="eyebrow">
+
+                <span class="eyebrow-line"></span>
+
+                OUR SERVICES
+
+            </div>
+
+
+            <h1>
+
+                Data solutions
+                <span class="gradient-text">
+                    built to scale.
+                </span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                From sports video annotation to AI-ready
+                datasets and technology solutions, we help
+                businesses turn complex information into
+                structured, usable data.
+
+            </p>
+
+
+            <div class="hero-actions">
 
                 <a
                     href="contact.html"
-                    class="nav-contact-button"
+                    class="button button-primary"
                 >
-                    Let's Talk
+
+                    Discuss Your Project
 
                     <i class="fa-solid fa-arrow-right"></i>
 
                 </a>
 
-            </nav>
+
+                <a
+                    href="#services"
+                    class="button button-link"
+                >
+
+                    Explore Services
+
+                    <i class="fa-solid fa-arrow-down"></i>
+
+                </a>
+
+            </div>
 
         </div>
 
-    </header>
 
+        <div class="hero-visual reveal">
 
+            <div class="hero-image-wrapper">
 
-    <!-- =====================================================
-         PAGE HERO
-    ====================================================== -->
+                <img
+                    src="Images/Soccer Home Page.jpg"
+                    alt="Sports data analysis"
+                >
 
-    <main>
+                <div class="hero-image-overlay"></div>
 
+                <div class="hero-image-content">
 
-        <section class="hero-section">
+                    <span>
+                        QUANTIFY DATA SOLUTIONS
+                    </span>
 
-            <div class="hero-background-grid"></div>
-
-            <div class="hero-glow hero-glow-one"></div>
-
-            <div class="hero-glow hero-glow-two"></div>
-
-
-            <div class="container hero-container">
-
-
-                <!-- HERO CONTENT -->
-
-                <div class="hero-content reveal">
-
-                    <div class="eyebrow">
-
-                        <span class="eyebrow-line"></span>
-
-                        WHAT WE DO
-
-                    </div>
-
-
-                    <h1>
-
-                        Data solutions
-                        <span class="gradient-text">
-                            built for intelligence.
-                        </span>
-
-                    </h1>
-
-
-                    <p class="hero-description">
-
-                        From high-precision data annotation to
-                        sports intelligence, AI-ready datasets,
-                        analytics, and software development —
-                        we help organizations turn complex data
-                        into usable intelligence.
-
-                    </p>
-
-
-                    <div class="hero-actions">
-
-                        <a
-                            href="#services"
-                            class="button button-primary"
-                        >
-
-                            Explore Services
-
-                            <i class="fa-solid fa-arrow-down"></i>
-
-                        </a>
-
-
-                        <a
-                            href="contact.html"
-                            class="button button-link"
-                        >
-
-                            Discuss Your Project
-
-                            <i class="fa-solid fa-arrow-right"></i>
-
-                        </a>
-
-                    </div>
-
-
-                    <div class="hero-metrics">
-
-                        <div class="hero-metric">
-
-                            <strong>
-                                78K+
-                            </strong>
-
-                            <span>
-                                Matches Analyzed
-                            </span>
-
-                        </div>
-
-
-                        <div class="hero-metric">
-
-                            <strong>
-                                60+
-                            </strong>
-
-                            <span>
-                                Analysts
-                            </span>
-
-                        </div>
-
-
-                        <div class="hero-metric">
-
-                            <strong>
-                                24h
-                            </strong>
-
-                            <span>
-                                Fast Turnaround
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- HERO VISUAL -->
-
-                <div class="hero-visual reveal reveal-delay">
-
-                    <div class="hero-image-wrapper">
-
-                        <img
-                            src="assets/images/services-hero.jpg"
-                            alt="Data analysis and technology services"
-                            loading="eager"
-                        >
-
-                        <div class="hero-image-overlay"></div>
-
-
-                        <div class="hero-image-content">
-
-                            <span>
-                                DATA • AI • SPORTS
-                            </span>
-
-                            <strong>
-                                Intelligence in every dataset.
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="floating-card floating-card-top">
-
-                        <div class="floating-icon">
-
-                            <i class="fa-solid fa-database"></i>
-
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Structured Data
-                            </strong>
-
-                            <span>
-                                Built for your workflow
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="floating-card floating-card-bottom">
-
-                        <span class="status-dot"></span>
-
-                        <div>
-
-                            <strong>
-                                Quality Controlled
-                            </strong>
-
-                            <span>
-                                Multi-stage QA process
-                            </span>
-
-                        </div>
-
-                    </div>
+                    <strong>
+                        Structured Data.
+                        <br>
+                        Better Decisions.
+                    </strong>
 
                 </div>
 
             </div>
 
-        </section>
+        </div>
+
+    </div>
+
+</section>
 
 
+<!-- =========================================================
+     SERVICES OVERVIEW
+     ========================================================= -->
 
-        <!-- =================================================
-             SERVICES INTRO
-        ================================================== -->
+<section
+    class="section"
+    id="services"
+>
 
-        <section
-            class="section services-section"
-            id="services"
-        >
-
-            <div class="container">
-
-
-                <div class="section-heading reveal">
-
-                    <div>
-
-                        <div class="section-label">
-
-                            OUR CAPABILITIES
-
-                        </div>
+    <div class="container">
 
 
-                        <h2>
+        <div class="center-heading reveal">
 
-                            Specialized services for
-                            <span>
-                                data-driven teams.
-                            </span>
+            <div class="section-label">
+                WHAT WE OFFER
+            </div>
 
-                        </h2>
+            <h2>
+
+                Specialized services
+                <br>
+                for data-driven teams.
+
+            </h2>
+
+            <p>
+
+                Our services combine trained human expertise,
+                structured processes and technology to deliver
+                dependable data at scale.
+
+            </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+
+            <!-- SPORTS DATA -->
+
+            <article
+                class="service-card reveal"
+                id="sports-data"
+            >
+
+                <div class="service-card-top">
+
+                    <span class="service-number">
+                        01
+                    </span>
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-futbol"></i>
 
                     </div>
 
+                </div>
 
-                    <p
-                        style="
-                            max-width: 390px;
-                            font-size: 14px;
-                            line-height: 1.8;
-                        "
-                    >
 
-                        We combine trained human expertise,
-                        structured workflows, quality assurance,
-                        and technology to deliver reliable
-                        data at scale.
+                <h3>
 
-                    </p>
+                    Sports Data
+                    <br>
+                    Annotation
+
+                </h3>
+
+
+                <p>
+
+                    Detailed sports event tagging and
+                    structured match data for analytics,
+                    scouting and performance platforms.
+
+                </p>
+
+
+                <a
+                    href="#sports-data-details"
+                    class="service-card-link"
+                >
+
+                    Explore service
+
+                    <i class="fa-solid fa-arrow-down"></i>
+
+                </a>
+
+            </article>
+
+
+            <!-- VIDEO -->
+
+            <article
+                class="service-card reveal"
+                id="video-annotation"
+            >
+
+                <div class="service-card-top">
+
+                    <span class="service-number">
+                        02
+                    </span>
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-video"></i>
+
+                    </div>
 
                 </div>
 
 
+                <h3>
 
-                <!-- SERVICES GRID -->
+                    Video
+                    <br>
+                    Annotation
 
-                <div class="services-grid">
+                </h3>
 
 
-                    <!-- SERVICE 01 -->
+                <p>
 
-                    <article class="service-card service-card-featured reveal">
+                    Frame-level and event-based video
+                    annotation for computer vision,
+                    sports analytics and AI applications.
 
-                        <div class="service-card-top">
+                </p>
 
-                            <span class="service-number">
-                                01
-                            </span>
 
-                            <div class="service-icon">
+                <a
+                    href="#video-details"
+                    class="service-card-link"
+                >
 
-                                <i class="fa-solid fa-futbol"></i>
+                    Explore service
 
-                            </div>
+                    <i class="fa-solid fa-arrow-down"></i>
 
-                        </div>
+                </a>
 
+            </article>
 
-                        <div class="service-card-image">
 
-                            <img
-                                src="assets/images/sports-analysis.jpg"
-                                alt="Sports data analysis"
-                                loading="lazy"
-                            >
+            <!-- AI -->
 
-                        </div>
+            <article
+                class="service-card reveal"
+                id="ai-data"
+            >
 
+                <div class="service-card-top">
 
-                        <h3>
-                            Sports Data & Analysis
-                        </h3>
+                    <span class="service-number">
+                        03
+                    </span>
 
+                    <div class="service-icon">
 
-                        <p>
+                        <i class="fa-solid fa-brain"></i>
 
-                            High-precision sports data collection,
-                            match analysis, event tagging, tactical
-                            analysis, player tracking, and structured
-                            sports intelligence.
-
-                        </p>
-
-
-                        <a
-                            href="#sports"
-                            class="service-card-link"
-                        >
-
-                            Explore sports solutions
-
-                            <i class="fa-solid fa-arrow-right"></i>
-
-                        </a>
-
-                    </article>
-
-
-
-                    <!-- SERVICE 02 -->
-
-                    <article class="service-card reveal reveal-delay">
-
-                        <div class="service-card-top">
-
-                            <span class="service-number">
-                                02
-                            </span>
-
-                            <div class="service-icon">
-
-                                <i class="fa-solid fa-tags"></i>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="service-card-image">
-
-                            <img
-                                src="assets/images/data-annotation.jpg"
-                                alt="Data annotation services"
-                                loading="lazy"
-                            >
-
-                        </div>
-
-
-                        <h3>
-                            Data Annotation
-                        </h3>
-
-
-                        <p>
-
-                            Human-powered annotation for computer
-                            vision, machine learning, AI training,
-                            video, image, text, and specialized
-                            datasets.
-
-                        </p>
-
-
-                        <a
-                            href="#annotation"
-                            class="service-card-link"
-                        >
-
-                            Explore annotation
-
-                            <i class="fa-solid fa-arrow-right"></i>
-
-                        </a>
-
-                    </article>
-
-
-
-                    <!-- SERVICE 03 -->
-
-                    <article class="service-card reveal">
-
-                        <div class="service-card-top">
-
-                            <span class="service-number">
-                                03
-                            </span>
-
-                            <div class="service-icon">
-
-                                <i class="fa-solid fa-chart-line"></i>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="service-card-image">
-
-                            <img
-                                src="assets/images/data-analytics.jpg"
-                                alt="Data analytics and machine learning"
-                                loading="lazy"
-                            >
-
-                        </div>
-
-
-                        <h3>
-                            Data Analytics & ML
-                        </h3>
-
-
-                        <p>
-
-                            Transform raw information into useful
-                            insights through data analysis,
-                            visualization, machine learning,
-                            and intelligent reporting.
-
-                        </p>
-
-
-                        <a
-                            href="#analytics"
-                            class="service-card-link"
-                        >
-
-                            Explore analytics
-
-                            <i class="fa-solid fa-arrow-right"></i>
-
-                        </a>
-
-                    </article>
-
-
-
-                    <!-- SERVICE 04 -->
-
-                    <article class="service-card reveal reveal-delay">
-
-                        <div class="service-card-top">
-
-                            <span class="service-number">
-                                04
-                            </span>
-
-                            <div class="service-icon">
-
-                                <i class="fa-solid fa-code"></i>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="service-card-image">
-
-                            <img
-                                src="assets/images/software-development.jpg"
-                                alt="Software development"
-                                loading="lazy"
-                            >
-
-                        </div>
-
-
-                        <h3>
-                            Software Development
-                        </h3>
-
-
-                        <p>
-
-                            Modern web applications, business
-                            platforms, internal tools, dashboards,
-                            APIs, automation, and scalable digital
-                            solutions.
-
-                        </p>
-
-
-                        <a
-                            href="#software"
-                            class="service-card-link"
-                        >
-
-                            Explore development
-
-                            <i class="fa-solid fa-arrow-right"></i>
-
-                        </a>
-
-                    </article>
-
-
-
-                    <!-- SERVICE 05 -->
-
-                    <article class="service-card reveal">
-
-                        <div class="service-card-top">
-
-                            <span class="service-number">
-                                05
-                            </span>
-
-                            <div class="service-icon">
-
-                                <i class="fa-solid fa-heart-pulse"></i>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="service-card-image">
-
-                            <img
-                                src="assets/images/healthcare-data.jpg"
-                                alt="Healthcare data annotation"
-                                loading="lazy"
-                            >
-
-                        </div>
-
-
-                        <h3>
-                            Healthcare Data
-                        </h3>
-
-
-                        <p>
-
-                            Structured annotation and data
-                            preparation workflows designed to
-                            support healthcare AI, medical
-                            computer vision, and research datasets.
-
-                        </p>
-
-
-                        <a
-                            href="#healthcare"
-                            class="service-card-link"
-                        >
-
-                            Explore healthcare
-
-                            <i class="fa-solid fa-arrow-right"></i>
-
-                        </a>
-
-                    </article>
-
-
-
-                    <!-- SERVICE 06 -->
-
-                    <article class="service-card reveal reveal-delay">
-
-                        <div class="service-card-top">
-
-                            <span class="service-number">
-                                06
-                            </span>
-
-                            <div class="service-icon">
-
-                                <i class="fa-solid fa-car"></i>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="service-card-image">
-
-                            <img
-                                src="assets/images/automotive-data.jpg"
-                                alt="Automotive AI data"
-                                loading="lazy"
-                            >
-
-                        </div>
-
-
-                        <h3>
-                            Automotive AI Data
-                        </h3>
-
-
-                        <p>
-
-                            Image and video annotation workflows
-                            supporting autonomous driving,
-                            perception systems, object detection,
-                            and automotive AI development.
-
-                        </p>
-
-
-                        <a
-                            href="#automotive"
-                            class="service-card-link"
-                        >
-
-                            Explore automotive
-
-                            <i class="fa-solid fa-arrow-right"></i>
-
-                        </a>
-
-                    </article>
+                    </div>
 
                 </div>
+
+
+                <h3>
+
+                    AI & Machine
+                    <br>
+                    Learning Data
+
+                </h3>
+
+
+                <p>
+
+                    High-quality annotated datasets designed
+                    to support computer vision, machine
+                    learning and AI model development.
+
+                </p>
+
+
+                <a
+                    href="#ai-details"
+                    class="service-card-link"
+                >
+
+                    Explore service
+
+                    <i class="fa-solid fa-arrow-down"></i>
+
+                </a>
+
+            </article>
+
+
+            <!-- SOFTWARE -->
+
+            <article
+                class="service-card reveal"
+                id="software"
+            >
+
+                <div class="service-card-top">
+
+                    <span class="service-number">
+                        04
+                    </span>
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-code"></i>
+
+                    </div>
+
+                </div>
+
+
+                <h3>
+
+                    Data & Software
+                    <br>
+                    Solutions
+
+                </h3>
+
+
+                <p>
+
+                    Custom technology, data processing and
+                    workflow solutions designed around your
+                    business requirements.
+
+                </p>
+
+
+                <a
+                    href="#software-details"
+                    class="service-card-link"
+                >
+
+                    Explore service
+
+                    <i class="fa-solid fa-arrow-down"></i>
+
+                </a>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SPORTS DATA DETAIL
+     ========================================================= -->
+
+<section
+    class="section"
+    id="sports-data-details"
+>
+
+    <div class="container why-grid">
+
+
+        <div class="why-content reveal">
+
+            <div class="section-label">
+                SPORTS DATA
+            </div>
+
+
+            <h2>
+
+                Turn every match
+                into structured
+                intelligence.
+
+            </h2>
+
+
+            <p>
+
+                Our sports annotation teams transform
+                match footage into structured event data
+                that can support analytics, scouting,
+                performance analysis and sports technology
+                platforms.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+                <a
+                    href="contact.html"
+                    class="button button-primary"
+                >
+
+                    Talk to our team
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
 
             </div>
 
-        </section>
+        </div>
 
 
+        <div class="why-features reveal">
 
-        <!-- =================================================
-             SPORTS SOLUTIONS
-        ================================================== -->
 
-        <section
-            class="section dark-section"
-            id="sports"
-        >
+            <div class="why-feature">
 
-            <div class="container">
+                <div class="why-feature-icon">
 
-
-                <div class="why-grid">
-
-
-                    <div class="why-content reveal">
-
-                        <div class="section-label light">
-                            SPORTS INTELLIGENCE
-                        </div>
-
-
-                        <h2>
-
-                            Turn every match into
-                            <span>
-                                structured intelligence.
-                            </span>
-
-                        </h2>
-
-
-                        <p>
-
-                            Our sports analysts transform
-                            unstructured match footage into
-                            detailed, structured datasets that
-                            can support scouting, performance
-                            analysis, AI systems, and sports
-                            technology platforms.
-
-                        </p>
-
-
-                        <a
-                            href="contact.html"
-                            class="button button-white"
-                        >
-
-                            Discuss a Sports Project
-
-                            <i class="fa-solid fa-arrow-right"></i>
-
-                        </a>
-
-                    </div>
-
-
-
-                    <div class="why-features reveal reveal-delay">
-
-
-                        <div class="why-feature">
-
-                            <div class="why-feature-icon">
-
-                                <i class="fa-solid fa-futbol"></i>
-
-                            </div>
-
-                            <div>
-
-                                <h3>
-                                    Match Event Tagging
-                                </h3>
-
-                                <p>
-                                    Passes, shots, tackles,
-                                    interceptions, fouls,
-                                    cards, offsides and more.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="why-feature">
-
-                            <div class="why-feature-icon">
-
-                                <i class="fa-solid fa-location-dot"></i>
-
-                            </div>
-
-                            <div>
-
-                                <h3>
-                                    Player & Position Data
-                                </h3>
-
-                                <p>
-                                    Structured player,
-                                    position and playtime
-                                    information.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="why-feature">
-
-                            <div class="why-feature-icon">
-
-                                <i class="fa-solid fa-video"></i>
-
-                            </div>
-
-                            <div>
-
-                                <h3>
-                                    Video Annotation
-                                </h3>
-
-                                <p>
-                                    Detailed frame-level
-                                    annotation for sports
-                                    video workflows.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="why-feature">
-
-                            <div class="why-feature-icon">
-
-                                <i class="fa-solid fa-shield-halved"></i>
-
-                            </div>
-
-                            <div>
-
-                                <h3>
-                                    Multi-stage QA
-                                </h3>
-
-                                <p>
-                                    Analyst, supervisor and
-                                    quality-control workflows
-                                    for accuracy.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
+                    <i class="fa-solid fa-futbol"></i>
 
                 </div>
 
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             ANNOTATION
-        ================================================== -->
-
-        <section
-            class="section"
-            id="annotation"
-        >
-
-            <div class="container">
-
-
-                <div class="section-heading reveal">
-
-                    <div>
-
-                        <div class="section-label">
-                            AI DATA
-                        </div>
-
-                        <h2>
-
-                            Annotation that makes
-                            <span>
-                                AI possible.
-                            </span>
-
-                        </h2>
-
-                    </div>
-
-                    <p
-                        style="
-                            max-width: 400px;
-                            font-size: 14px;
-                            line-height: 1.8;
-                        "
-                    >
-
-                        We build carefully structured datasets
-                        for teams developing computer vision,
-                        machine learning, and AI products.
-
-                    </p>
-
-                </div>
-
-
-
-                <div class="services-grid">
-
-
-                    <article class="service-card reveal">
-
-                        <div class="service-card-top">
-
-                            <span class="service-number">
-                                IMAGE
-                            </span>
-
-                            <div class="service-icon">
-
-                                <i class="fa-regular fa-image"></i>
-
-                            </div>
-
-                        </div>
-
-
-                        <h3>
-                            Image Annotation
-                        </h3>
-
-
-                        <p>
-
-                            Bounding boxes, polygons,
-                            segmentation, classification,
-                            keypoints, and specialized
-                            visual annotation.
-
-                        </p>
-
-                    </article>
-
-
-
-                    <article class="service-card reveal reveal-delay">
-
-                        <div class="service-card-top">
-
-                            <span class="service-number">
-                                VIDEO
-                            </span>
-
-                            <div class="service-icon">
-
-                                <i class="fa-solid fa-film"></i>
-
-                            </div>
-
-                        </div>
-
-
-                        <h3>
-                            Video Annotation
-                        </h3>
-
-
-                        <p>
-
-                            Frame-by-frame annotation,
-                            object tracking, event detection,
-                            temporal labeling, and action
-                            recognition workflows.
-
-                        </p>
-
-                    </article>
-
-
-
-                    <article class="service-card reveal">
-
-                        <div class="service-card-top">
-
-                            <span class="service-number">
-                                TEXT
-                            </span>
-
-                            <div class="service-icon">
-
-                                <i class="fa-solid fa-align-left"></i>
-
-                            </div>
-
-                        </div>
-
-
-                        <h3>
-                            Text & NLP
-                        </h3>
-
-
-                        <p>
-
-                            Classification, entity annotation,
-                            sentiment, intent, categorization,
-                            and structured text datasets.
-
-                        </p>
-
-                    </article>
-
-
-
-                    <article class="service-card reveal reveal-delay">
-
-                        <div class="service-card-top">
-
-                            <span class="service-number">
-                                CUSTOM
-                            </span>
-
-                            <div class="service-icon">
-
-                                <i class="fa-solid fa-sliders"></i>
-
-                            </div>
-
-                        </div>
-
-
-                        <h3>
-                            Custom Annotation
-                        </h3>
-
-
-                        <p>
-
-                            Need a specialized workflow?
-                            We can adapt annotation guidelines,
-                            QA processes, tooling, and
-                            workforce structure to your project.
-
-                        </p>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             ANALYTICS / SOFTWARE
-        ================================================== -->
-
-        <section
-            class="section stats-section"
-            id="analytics"
-        >
-
-            <div class="container">
-
-
-                <div class="center-heading reveal">
-
-                    <div class="section-label">
-                        DATA & TECHNOLOGY
-                    </div>
-
-
-                    <h2>
-
-                        From raw data to
-                        <span>
-                            actionable results.
-                        </span>
-
-                    </h2>
-
+                <div>
+
+                    <h3>
+                        Match Events
+                    </h3>
 
                     <p>
-
-                        Combine data expertise with modern
-                        technology to build better decisions
-                        and better products.
-
+                        Passes, shots, crosses, tackles,
+                        interceptions and other game events.
                     </p>
 
                 </div>
 
-
-                <div class="stats-wrapper">
-
-
-                    <div class="stat-item">
-
-                        <strong class="counter" data-target="78000">
-                            0
-                        </strong>
-
-                        <span>
-                            Matches analyzed
-                        </span>
-
-                    </div>
+            </div>
 
 
-                    <div class="stat-item">
+            <div class="why-feature">
 
-                        <strong class="counter" data-target="60">
-                            0
-                        </strong>
+                <div class="why-feature-icon">
 
-                        <span>
-                            Analysts
-                        </span>
+                    <i class="fa-solid fa-user"></i>
 
-                    </div>
+                </div>
 
+                <div>
 
-                    <div class="stat-item">
+                    <h3>
+                        Player Actions
+                    </h3>
 
-                        <strong class="counter" data-target="3">
-                            0
-                        </strong>
-
-                        <span>
-                            Years experience
-                        </span>
-
-                    </div>
-
-
-                    <div class="stat-item">
-
-                        <strong>
-                            12–24h
-                        </strong>
-
-                        <span>
-                            Typical turnaround
-                        </span>
-
-                    </div>
+                    <p>
+                        Structured player-level event
+                        and action information.
+                    </p>
 
                 </div>
 
             </div>
 
-        </section>
 
+            <div class="why-feature">
 
+                <div class="why-feature-icon">
 
-        <!-- =================================================
-             SOFTWARE DEVELOPMENT
-        ================================================== -->
+                    <i class="fa-solid fa-location-dot"></i>
 
-        <section
-            class="section"
-            id="software"
-        >
+                </div>
 
-            <div class="container">
+                <div>
 
+                    <h3>
+                        Position Data
+                    </h3>
 
-                <div class="why-grid">
-
-
-                    <div class="why-content reveal">
-
-                        <div class="section-label">
-                            SOFTWARE DEVELOPMENT
-                        </div>
-
-
-                        <h2>
-
-                            Build digital products
-                            <span>
-                                around your data.
-                            </span>
-
-                        </h2>
-
-
-                        <p>
-
-                            We develop modern web applications,
-                            dashboards, internal platforms,
-                            automation systems, APIs, and
-                            data-driven software designed around
-                            your organization's workflow.
-
-                        </p>
-
-
-                        <a
-                            href="contact.html"
-                            class="button button-primary"
-                        >
-
-                            Start a Project
-
-                            <i class="fa-solid fa-arrow-right"></i>
-
-                        </a>
-
-                    </div>
-
-
-
-                    <div class="why-features reveal reveal-delay">
-
-
-                        <div class="why-feature">
-
-                            <div class="why-feature-icon">
-
-                                <i class="fa-solid fa-window-maximize"></i>
-
-                            </div>
-
-                            <div>
-
-                                <h3>
-                                    Web Applications
-                                </h3>
-
-                                <p>
-                                    Responsive, modern and
-                                    scalable business
-                                    applications.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="why-feature">
-
-                            <div class="why-feature-icon">
-
-                                <i class="fa-solid fa-chart-pie"></i>
-
-                            </div>
-
-                            <div>
-
-                                <h3>
-                                    Dashboards
-                                </h3>
-
-                                <p>
-                                    Turn operational data into
-                                    clear visual insights.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="why-feature">
-
-                            <div class="why-feature-icon">
-
-                                <i class="fa-solid fa-gears"></i>
-
-                            </div>
-
-                            <div>
-
-                                <h3>
-                                    Automation
-                                </h3>
-
-                                <p>
-                                    Reduce repetitive work with
-                                    workflow automation.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="why-feature">
-
-                            <div class="why-feature-icon">
-
-                                <i class="fa-solid fa-server"></i>
-
-                            </div>
-
-                            <div>
-
-                                <h3>
-                                    APIs & Integration
-                                </h3>
-
-                                <p>
-                                    Connect your applications,
-                                    data and external systems.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
+                    <p>
+                        Position and contextual information
+                        captured from match footage.
+                    </p>
 
                 </div>
 
             </div>
 
-        </section>
+
+            <div class="why-feature">
+
+                <div class="why-feature-icon">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Quality Control
+                    </h3>
+
+                    <p>
+                        Review workflows help maintain
+                        consistent annotation standards.
+                    </p>
+
+                </div>
+
+            </div>
 
 
+        </div>
 
-        <!-- =================================================
-             OTHER INDUSTRIES
-        ================================================== -->
+    </div>
 
-        <section
-            class="section"
-            id="healthcare"
-        >
-
-            <div class="container">
+</section>
 
 
-                <div class="section-heading reveal">
+<!-- =========================================================
+     VIDEO ANNOTATION
+     ========================================================= -->
 
-                    <div>
+<section
+    class="section"
+    id="video-details"
+>
 
-                        <div class="section-label">
-                            INDUSTRIES
-                        </div>
+    <div class="container why-grid">
 
-                        <h2>
 
-                            Data expertise across
-                            <span>
-                                industries.
-                            </span>
+        <div class="why-features reveal">
 
-                        </h2>
+
+            <div class="why-feature">
+
+                <div class="why-feature-icon">
+
+                    <i class="fa-solid fa-film"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Video Labeling
+                    </h3>
+
+                    <p>
+                        Structured labels applied to
+                        relevant visual information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="why-feature">
+
+                <div class="why-feature-icon">
+
+                    <i class="fa-solid fa-crosshairs"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Object Annotation
+                    </h3>
+
+                    <p>
+                        Visual objects can be identified,
+                        classified and tracked.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="why-feature">
+
+                <div class="why-feature-icon">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Temporal Events
+                    </h3>
+
+                    <p>
+                        Events can be connected to specific
+                        moments within video sequences.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="why-feature">
+
+                <div class="why-feature-icon">
+
+                    <i class="fa-solid fa-check-double"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Validation
+                    </h3>
+
+                    <p>
+                        Quality checks help reduce
+                        annotation inconsistencies.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="why-content reveal">
+
+            <div class="section-label">
+                VIDEO ANNOTATION
+            </div>
+
+
+            <h2>
+
+                Visual data
+                ready for
+                intelligent systems.
+
+            </h2>
+
+
+            <p>
+
+                We help transform raw video into structured
+                visual information suitable for analytics,
+                computer vision and machine learning
+                workflows.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+                <a
+                    href="contact.html"
+                    class="button button-primary"
+                >
+
+                    Discuss Video Data
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     AI / ML
+     ========================================================= -->
+
+<section
+    class="section"
+    id="ai-details"
+>
+
+    <div class="container">
+
+
+        <div class="center-heading reveal">
+
+            <div class="section-label">
+                AI & MACHINE LEARNING
+            </div>
+
+            <h2>
+
+                Build better AI
+                <br>
+                with better data.
+
+            </h2>
+
+            <p>
+
+                Models are only as good as the data used
+                to train them. We help create structured,
+                consistent datasets for AI development.
+
+            </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+
+            <article
+                class="service-card reveal"
+            >
+
+                <div class="service-card-top">
+
+                    <span class="service-number">
+                        AI / 01
+                    </span>
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-database"></i>
 
                     </div>
 
                 </div>
 
 
-                <div class="services-grid">
+                <h3>
+                    Dataset
+                    Preparation
+                </h3>
 
 
-                    <article class="service-card reveal">
+                <p>
 
-                        <div class="service-icon">
+                    Organize and prepare raw information
+                    into structured datasets ready for
+                    downstream AI workflows.
 
-                            <i class="fa-solid fa-heart-pulse"></i>
+                </p>
 
-                        </div>
-
-                        <h3>
-                            Healthcare
-                        </h3>
-
-                        <p>
-
-                            Annotation and data preparation
-                            workflows for healthcare AI,
-                            medical imaging and research.
-
-                        </p>
-
-                    </article>
+            </article>
 
 
-                    <article
-                        class="service-card reveal reveal-delay"
-                        id="automotive"
-                    >
+            <article
+                class="service-card reveal"
+            >
 
-                        <div class="service-icon">
+                <div class="service-card-top">
 
-                            <i class="fa-solid fa-car-side"></i>
+                    <span class="service-number">
+                        AI / 02
+                    </span>
 
-                        </div>
+                    <div class="service-icon">
 
-                        <h3>
-                            Automotive
-                        </h3>
-
-                        <p>
-
-                            Visual datasets and annotation
-                            workflows for perception,
-                            autonomous systems and automotive AI.
-
-                        </p>
-
-                    </article>
-
-
-                    <article class="service-card reveal">
-
-                        <div class="service-icon">
-
-                            <i class="fa-solid fa-robot"></i>
-
-                        </div>
-
-                        <h3>
-                            AI & Technology
-                        </h3>
-
-                        <p>
-
-                            High-quality training datasets and
-                            structured data services for AI
-                            and machine learning products.
-
-                        </p>
-
-                    </article>
-
-
-                    <article class="service-card reveal reveal-delay">
-
-                        <div class="service-icon">
-
-                            <i class="fa-solid fa-building"></i>
-
-                        </div>
-
-                        <h3>
-                            Enterprise
-                        </h3>
-
-                        <p>
-
-                            Flexible teams and customized
-                            workflows for organizations that
-                            need reliable data operations at scale.
-
-                        </p>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             CTA
-        ================================================== -->
-
-        <section class="cta-section">
-
-            <div class="container">
-
-                <div class="cta-card reveal">
-
-
-                    <div>
-
-                        <h2>
-                            Have a data challenge?
-                        </h2>
-
-                        <p>
-
-                            Tell us what you're building.
-                            We'll help you determine the right
-                            workflow, technology and team.
-
-                        </p>
+                        <i class="fa-solid fa-tags"></i>
 
                     </div>
 
+                </div>
 
-                    <a
-                        href="contact.html"
-                        class="button button-white"
-                    >
 
-                        Let's Talk
+                <h3>
+                    Data
+                    Labeling
+                </h3>
 
-                        <i class="fa-solid fa-arrow-right"></i>
 
-                    </a>
+                <p>
+
+                    Apply project-specific labels and
+                    classification standards to visual
+                    and structured data.
+
+                </p>
+
+            </article>
+
+
+            <article
+                class="service-card reveal"
+            >
+
+                <div class="service-card-top">
+
+                    <span class="service-number">
+                        AI / 03
+                    </span>
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+
+                    </div>
+
+                </div>
+
+
+                <h3>
+                    Data
+                    Validation
+                </h3>
+
+
+                <p>
+
+                    Review and validate datasets against
+                    defined quality and consistency
+                    requirements.
+
+                </p>
+
+            </article>
+
+
+            <article
+                class="service-card reveal"
+            >
+
+                <div class="service-card-top">
+
+                    <span class="service-number">
+                        AI / 04
+                    </span>
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-robot"></i>
+
+                    </div>
+
+                </div>
+
+
+                <h3>
+                    Computer Vision
+                    Data
+                </h3>
+
+
+                <p>
+
+                    Annotation workflows designed for
+                    computer vision and visual intelligence
+                    applications.
+
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     DATA & SOFTWARE
+     ========================================================= -->
+
+<section
+    class="section"
+    id="software-details"
+>
+
+    <div class="container why-grid">
+
+
+        <div class="why-content reveal">
+
+            <div class="section-label">
+                TECHNOLOGY SOLUTIONS
+            </div>
+
+
+            <h2>
+
+                Technology that
+                fits your workflow.
+
+            </h2>
+
+
+            <p>
+
+                Beyond annotation, we can help businesses
+                organize data workflows and develop
+                practical software solutions around their
+                operational needs.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+                <a
+                    href="contact.html"
+                    class="button button-primary"
+                >
+
+                    Discuss Your Requirements
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="why-features reveal">
+
+
+            <div class="why-feature">
+
+                <div class="why-feature-icon">
+
+                    <i class="fa-solid fa-code"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Software Development
+                    </h3>
+
+                    <p>
+                        Web-based applications and
+                        business-focused technology solutions.
+                    </p>
 
                 </div>
 
             </div>
 
-        </section>
 
-    </main>
+            <div class="why-feature">
+
+                <div class="why-feature-icon">
+
+                    <i class="fa-solid fa-database"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Data Processing
+                    </h3>
+
+                    <p>
+                        Organize, transform and process
+                        business data efficiently.
+                    </p>
+
+                </div>
+
+            </div>
 
 
+            <div class="why-feature">
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+                <div class="why-feature-icon">
 
-    <footer class="site-footer">
+                    <i class="fa-solid fa-gears"></i>
 
-        <div class="container footer-grid">
+                </div>
+
+                <div>
+
+                    <h3>
+                        Workflow Automation
+                    </h3>
+
+                    <p>
+                        Improve repetitive workflows using
+                        practical automation.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="why-feature">
+
+                <div class="why-feature-icon">
+
+                    <i class="fa-solid fa-chart-simple"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Data Insights
+                    </h3>
+
+                    <p>
+                        Turn processed data into useful
+                        information for decision-making.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SPORTS COVERAGE
+     ========================================================= -->
+
+<section
+    class="section"
+>
+
+    <div class="container">
+
+
+        <div class="center-heading reveal">
+
+            <div class="section-label">
+                SPORTS COVERAGE
+            </div>
+
+            <h2>
+
+                Specialized knowledge
+                across sports.
+
+            </h2>
+
+            <p>
+
+                Our sports-focused operations are designed
+                around the unique requirements of different
+                game environments.
+
+            </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+
+            <article class="service-card reveal">
+
+                <div class="service-card-top">
+
+                    <span class="service-number">
+                        SPORT 01
+                    </span>
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-futbol"></i>
+
+                    </div>
+
+                </div>
+
+                <h3>
+                    Football
+                </h3>
+
+                <p>
+
+                    Match events, player actions,
+                    tactical information and detailed
+                    football data annotation.
+
+                </p>
+
+            </article>
+
+
+            <article class="service-card reveal">
+
+                <div class="service-card-top">
+
+                    <span class="service-number">
+                        SPORT 02
+                    </span>
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-hockey-puck"></i>
+
+                    </div>
+
+                </div>
+
+                <h3>
+                    Ice Hockey
+                </h3>
+
+                <p>
+
+                    Structured game events and visual
+                    data annotation for hockey analysis.
+
+                </p>
+
+            </article>
+
+
+            <article class="service-card reveal">
+
+                <div class="service-card-top">
+
+                    <span class="service-number">
+                        SPORT 03
+                    </span>
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-basketball"></i>
+
+                    </div>
+
+                </div>
+
+                <h3>
+                    Basketball
+                </h3>
+
+                <p>
+
+                    Player and game event information
+                    supporting basketball analytics.
+
+                </p>
+
+            </article>
+
+
+            <article class="service-card reveal">
+
+                <div class="service-card-top">
+
+                    <span class="service-number">
+                        SPORT 04
+                    </span>
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-baseball"></i>
+
+                    </div>
+
+                </div>
+
+                <h3>
+                    Baseball
+                </h3>
+
+                <p>
+
+                    Structured sports data workflows
+                    for baseball-related use cases.
+
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CTA
+     ========================================================= -->
+
+<section class="cta-section">
+
+    <div class="container">
+
+
+        <div class="cta-card reveal">
+
+
+            <div>
+
+                <div class="section-label">
+                    READY TO START?
+                </div>
+
+
+                <h2>
+
+                    Tell us what you
+                    need to build.
+
+                </h2>
+
+
+                <p>
+
+                    Share your project requirements,
+                    expected volume and timeline. We'll
+                    help you determine the right approach.
+
+                </p>
+
+            </div>
+
+
+            <a
+                href="contact.html"
+                class="button button-primary"
+            >
+
+                Start a Conversation
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer class="site-footer">
+
+    <div class="container">
+
+
+        <div class="footer-grid">
 
 
             <div class="footer-company">
 
+
                 <a
                     href="index.html"
-                    class="brand footer-brand"
+                    class="brand"
                 >
 
-                    <div class="brand-logo">
-
-                        <img
-                            src="assets/images/logo.png"
-                            alt="Quantify Data Solutions"
-                        >
-
-                    </div>
+                    <img
+                        src="Images/QDS Logo.png"
+                        alt="Quantify Data Solutions logo"
+                        class="brand-logo"
+                    >
 
                     <div class="brand-name">
+
                         Quantify
-                        <span>Data Solutions</span>
+
+                        <span>
+                            DATA SOLUTIONS
+                        </span>
+
                     </div>
 
                 </a>
@@ -1665,21 +1483,19 @@
 
                 <p>
 
-                    Professional data, AI, sports analysis,
-                    annotation and technology solutions
-                    designed to help businesses turn data
-                    into intelligence.
+                    Professional sports data annotation,
+                    video analysis, AI data and technology
+                    solutions for data-driven businesses.
 
                 </p>
 
             </div>
 
 
-
             <div class="footer-column">
 
                 <h4>
-                    Company
+                    COMPANY
                 </h4>
 
                 <a href="index.html">
@@ -1701,42 +1517,38 @@
             </div>
 
 
-
             <div class="footer-column">
 
                 <h4>
-                    Services
+                    SERVICES
                 </h4>
 
-                <a href="#sports">
-                    Sports Analysis
+                <a href="#sports-data-details">
+                    Sports Data
                 </a>
 
-                <a href="#annotation">
-                    Data Annotation
+                <a href="#video-details">
+                    Video Annotation
                 </a>
 
-                <a href="#analytics">
-                    Data Analytics
+                <a href="#ai-details">
+                    AI & ML Data
                 </a>
 
-                <a href="#software">
-                    Software Development
+                <a href="#software-details">
+                    Technology
                 </a>
 
             </div>
 
 
-
             <div class="footer-column">
 
                 <h4>
-                    Contact
+                    CONTACT
                 </h4>
 
-                <a
-                    href="mailto:info@quantifydatasolutions.in"
-                >
+                <a href="mailto:info@quantifydatasolutions.in">
                     info@quantifydatasolutions.in
                 </a>
 
@@ -1744,39 +1556,49 @@
                     Nashik, Maharashtra, India
                 </span>
 
+                <a href="contact.html">
+                    Start a conversation
+                </a>
+
             </div>
 
-        </div>
-
-
-
-        <div class="container footer-bottom">
-
-            <span>
-                © <span id="currentYear"></span>
-                Quantify Data Solutions. All rights reserved.
-            </span>
-
-            <span>
-                Data • AI • Sports • Technology
-            </span>
 
         </div>
 
-    </footer>
+
+        <div class="footer-bottom">
+
+            <span>
+
+                ©
+                <span id="currentYear"></span>
+                Quantify Data Solutions.
+                All rights reserved.
+
+            </span>
 
 
+            <span>
+                Built for data-driven businesses.
+            </span>
 
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
+        </div>
 
-    <script
-        src="index.js"
-        defer
-    ></script>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+<script
+    src="index.js"
+    defer
+></script>
 
 
 </body>
-
 </html>
