@@ -1,970 +1,277 @@
-/* =========================================================
-   QUANTIFY DATA SOLUTIONS
-   GLOBAL WEBSITE JAVASCRIPT
-   ========================================================= */
-
 "use strict";
 
-
-/* =========================================================
-   01. DOM READY
-   ========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
-
     initializeMobileMenu();
-
     initializeStickyHeader();
-
     initializeScrollReveal();
-
     initializeSmoothScrolling();
-
     initializeFAQ();
-
     initializeCurrentYear();
-
     initializeContactForm();
-
     initializeCounters();
-
 });
-
-
-/* =========================================================
-   02. MOBILE NAVIGATION
-   ========================================================= */
 
 function initializeMobileMenu() {
     const menuButton = document.getElementById("mobileMenuButton");
     const navigation = document.getElementById("mainNavigation");
-
-    if (!menuButton || !navigation) {
-        return;
-    }
+    if (!menuButton || !navigation) return;
 
     const icon = menuButton.querySelector("i");
-
-    function setMenuState(isOpen) {
+    const setMenuState = (isOpen) => {
         navigation.classList.toggle("open", isOpen);
         document.body.classList.toggle("mobile-menu-open", isOpen);
-
-        menuButton.setAttribute(
-            "aria-expanded",
-            String(isOpen)
-        );
-
-        menuButton.setAttribute(
-            "aria-label",
-            isOpen
-                ? "Close navigation menu"
-                : "Open navigation menu"
-        );
-
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuButton.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
         if (icon) {
-            icon.classList.toggle(
-                "fa-bars",
-                !isOpen
-            );
-
-            icon.classList.toggle(
-                "fa-xmark",
-                isOpen
-            );
+            icon.classList.toggle("fa-bars", !isOpen);
+            icon.classList.toggle("fa-xmark", isOpen);
         }
-    }
-
-    function closeMenu() {
-        setMenuState(false);
-        menuButton.focus();
-    }
+    };
 
     menuButton.addEventListener("click", () => {
-        const isOpen =
-            navigation.classList.contains("open");
-
-        setMenuState(!isOpen);
+        setMenuState(!navigation.classList.contains("open"));
     });
 
-    navigation
-        .querySelectorAll("a")
-        .forEach((link) => {
-            link.addEventListener("click", () => {
-                setMenuState(false);
-            });
-        });
+    navigation.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => setMenuState(false));
+    });
 
     document.addEventListener("click", (event) => {
-        const clickedInsideNavigation =
-            navigation.contains(event.target);
-
-        const clickedMenuButton =
-            menuButton.contains(event.target);
-
         if (
             navigation.classList.contains("open") &&
-            !clickedInsideNavigation &&
-            !clickedMenuButton
+            !navigation.contains(event.target) &&
+            !menuButton.contains(event.target)
         ) {
-            closeMenu();
+            setMenuState(false);
         }
     });
 
     document.addEventListener("keydown", (event) => {
-        if (event.key !== "Escape") {
-            return;
+        if (event.key === "Escape" && navigation.classList.contains("open")) {
+            setMenuState(false);
+            menuButton.focus();
         }
-
-        if (!navigation.classList.contains("open")) {
-            return;
-        }
-
-        closeMenu();
     });
 
     window.addEventListener("resize", () => {
-        if (window.innerWidth > 820) {
-            setMenuState(false);
-        }
+        if (window.innerWidth > 820) setMenuState(false);
     });
 }
-
-
-
-
-
-/* =========================================================
-   03. STICKY HEADER
-   ========================================================= */
 
 function initializeStickyHeader() {
+    const header = document.getElementById("siteHeader");
+    if (!header) return;
 
-    const header =
-        document.getElementById("siteHeader");
-
-
-    if (!header) {
-        return;
-    }
-
-
-    const updateHeader =
-        () => {
-
-            if (window.scrollY > 30) {
-
-                header.classList.add("scrolled");
-
-            } else {
-
-                header.classList.remove("scrolled");
-
-            }
-
-        };
-
-
-    updateHeader();
-
-
-    window.addEventListener(
-        "scroll",
-        updateHeader,
-        {
-            passive: true
-        }
-    );
-
+    const update = () => header.classList.toggle("scrolled", window.scrollY > 30);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
 }
-
-
-/* =========================================================
-   04. SCROLL REVEAL
-   ========================================================= */
 
 function initializeScrollReveal() {
+    const elements = document.querySelectorAll(".reveal");
+    if (!elements.length) return;
 
-    const revealElements =
-        document.querySelectorAll(".reveal");
-
-
-    if (!revealElements.length) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        elements.forEach((element) => element.classList.add("visible"));
         return;
     }
 
-
-    /*
-     * Respect users who prefer reduced motion.
-     */
-
-    const prefersReducedMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
-
-
-    if (prefersReducedMotion) {
-
-        revealElements.forEach((element) => {
-
-            element.classList.add("visible");
-
+    const observer = new IntersectionObserver((entries, observerInstance) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("visible");
+            observerInstance.unobserve(entry.target);
         });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
 
-        return;
-    }
-
-
-    /*
-     * IntersectionObserver gives us
-     * smooth reveal animations without
-     * continuously checking scroll position.
-     */
-
-    const observer =
-        new IntersectionObserver(
-            (entries, observerInstance) => {
-
-                entries.forEach((entry) => {
-
-                    if (!entry.isIntersecting) {
-                        return;
-                    }
-
-
-                    entry.target.classList.add(
-                        "visible"
-                    );
-
-
-                    observerInstance.unobserve(
-                        entry.target
-                    );
-
-                });
-
-            },
-            {
-                threshold: 0.12,
-
-                rootMargin:
-                    "0px 0px -40px 0px"
-            }
-        );
-
-
-    revealElements.forEach((element) => {
-
-        observer.observe(element);
-
-    });
-
+    elements.forEach((element) => observer.observe(element));
 }
-
-
-/* =========================================================
-   05. SMOOTH INTERNAL LINKS
-   ========================================================= */
 
 function initializeSmoothScrolling() {
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", (event) => {
+            const targetId = link.getAttribute("href");
+            if (!targetId || targetId === "#") return;
 
-    const links =
-        document.querySelectorAll(
-            'a[href^="#"]'
-        );
+            const target = document.querySelector(targetId);
+            if (!target) return;
 
-
-    links.forEach((link) => {
-
-        link.addEventListener(
-            "click",
-            (event) => {
-
-                const targetId =
-                    link.getAttribute("href");
-
-
-                if (
-                    !targetId ||
-                    targetId === "#"
-                ) {
-
-                    return;
-
-                }
-
-
-                const target =
-                    document.querySelector(
-                        targetId
-                    );
-
-
-                if (!target) {
-                    return;
-                }
-
-
-                event.preventDefault();
-
-
-                const header =
-                    document.querySelector(
-                        ".site-header"
-                    );
-
-
-                const headerHeight =
-                    header
-                        ? header.offsetHeight
-                        : 0;
-
-
-                const targetPosition =
-                    target.getBoundingClientRect().top +
-                    window.scrollY -
-                    headerHeight -
-                    15;
-
-
-                window.scrollTo({
-
-                    top: targetPosition,
-
-                    behavior: "smooth"
-
-                });
-
-            }
-        );
-
+            event.preventDefault();
+            const header = document.querySelector(".site-header");
+            const headerHeight = header ? header.offsetHeight : 0;
+            const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 15;
+            window.scrollTo({ top, behavior: "smooth" });
+        });
     });
-
 }
-
-
-/* =========================================================
-   06. FAQ
-   ========================================================= */
 
 function initializeFAQ() {
-
-    const faqItems =
-        document.querySelectorAll(
-            ".faq-item"
-        );
-
-
-    if (!faqItems.length) {
-        return;
-    }
-
-
+    const faqItems = document.querySelectorAll(".faq-item");
     faqItems.forEach((item) => {
-
-        item.addEventListener(
-            "toggle",
-            () => {
-
-                if (!item.open) {
-                    return;
-                }
-
-
-                /*
-                 * Keep only one FAQ open at a time.
-                 */
-
-                faqItems.forEach((otherItem) => {
-
-                    if (
-                        otherItem !== item &&
-                        otherItem.open
-                    ) {
-
-                        otherItem.open = false;
-
-                    }
-
-                });
-
-            }
-        );
-
+        item.addEventListener("toggle", () => {
+            if (!item.open) return;
+            faqItems.forEach((otherItem) => {
+                if (otherItem !== item) otherItem.open = false;
+            });
+        });
     });
-
 }
-
-
-/* =========================================================
-   07. CURRENT YEAR
-   ========================================================= */
 
 function initializeCurrentYear() {
-
-    const yearElements =
-        document.querySelectorAll(
-            "#currentYear"
-        );
-
-
-    if (!yearElements.length) {
-        return;
-    }
-
-
-    const currentYear =
-        new Date().getFullYear();
-
-
-    yearElements.forEach((element) => {
-
-        element.textContent =
-            currentYear;
-
+    document.querySelectorAll("#currentYear").forEach((element) => {
+        element.textContent = new Date().getFullYear();
     });
-
 }
-
-
-/* =========================================================
-   08. CONTACT FORM
-   ========================================================= */
 
 function initializeContactForm() {
+    const form = document.getElementById("contactForm");
+    if (!form) return;
 
-    const form =
-        document.getElementById(
-            "contactForm"
-        );
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
 
+        const submitButton = form.querySelector("button[type=\"submit\"]");
+        const originalButtonHTML = submitButton ? submitButton.innerHTML : "";
 
-    if (!form) {
-        return;
-    }
+        clearFormMessage(form);
 
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
 
-    form.addEventListener(
-        "submit",
-        (event) => {
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.innerHTML = 'Sending Inquiry <i class="fa-solid fa-spinner fa-spin"></i>';
+        }
 
-            /*
-             * The backend has not been connected yet.
-             *
-             * We prevent a broken submission and show
-             * a temporary success message instead.
-             */
+        try {
+            const response = await fetch("contact-handler.php", {
+                method: "POST",
+                body: new FormData(form),
+                headers: { "Accept": "application/json" }
+            });
 
-            if (
-                form.getAttribute("action") ===
-                "#"
-            ) {
-
-                event.preventDefault();
-
-
-                showFormMessage(
-                    form,
-                    "Thank you. Your inquiry is ready to be connected to our business email system."
-                );
-
+            let result = {};
+            try {
+                result = await response.json();
+            } catch (_) {
+                result = {};
             }
 
+            if (!response.ok || !result.success) {
+                throw new Error(result.message || "We could not send your inquiry right now.");
+            }
+
+            showFormMessage(form, result.message, true);
+            form.reset();
+        } catch (error) {
+            showFormMessage(
+                form,
+                error.message || "We could not send your inquiry right now. Please email info@quantifydatasolutions.in directly.",
+                false
+            );
+        } finally {
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonHTML;
+            }
         }
-    );
-
+    });
 }
 
-
-/* =========================================================
-   FORM MESSAGE
-   ========================================================= */
-
-function showFormMessage(
-    form,
-    message
-) {
-
-    /*
-     * Remove an existing message first.
-     */
-
-    const existingMessage =
-        form.querySelector(
-            ".form-success-message"
-        );
-
-
-    if (existingMessage) {
-
-        existingMessage.remove();
-
-    }
-
-
-    const messageElement =
-        document.createElement("div");
-
-
-    messageElement.className =
-        "form-success-message";
-
-
-    messageElement.setAttribute(
-        "role",
-        "status"
-    );
-
-
-    messageElement.innerHTML = `
-
-        <i class="fa-solid fa-circle-check"></i>
-
-        <span>
-            ${message}
-        </span>
-
-    `;
-
-
-    /*
-     * Inline styles keep this temporary message
-     * independent from the main design system.
-     */
-
-    messageElement.style.display =
-        "flex";
-
-    messageElement.style.alignItems =
-        "center";
-
-    messageElement.style.gap =
-        "10px";
-
-    messageElement.style.padding =
-        "14px 16px";
-
-    messageElement.style.marginTop =
-        "4px";
-
-    messageElement.style.border =
-        "1px solid rgba(22, 199, 154, 0.25)";
-
-    messageElement.style.borderRadius =
-        "10px";
-
-    messageElement.style.background =
-        "rgba(22, 199, 154, 0.07)";
-
-    messageElement.style.color =
-        "#b7c5d3";
-
-    messageElement.style.fontSize =
-        "0.8rem";
-
-
-    const icon =
-        messageElement.querySelector("i");
-
-
-    if (icon) {
-
-        icon.style.color =
-            "#16c79a";
-
-    }
-
-
-    form.appendChild(
-        messageElement
-    );
-
+function clearFormMessage(form) {
+    const existing = form.querySelector(".form-success-message");
+    if (existing) existing.remove();
+    const existingError = form.querySelector(".form-error-message");
+    if (existingError) existingError.remove();
 }
 
+function showFormMessage(form, message, success) {
+    clearFormMessage(form);
 
-/* =========================================================
-   09. ANIMATED COUNTERS
-   ========================================================= */
+    const element = document.createElement("div");
+    element.className = success ? "form-success-message" : "form-error-message";
+    element.setAttribute("role", success ? "status" : "alert");
+    element.style.display = "flex";
+    element.style.alignItems = "center";
+    element.style.gap = "10px";
+    element.style.padding = "14px 16px";
+    element.style.marginTop = "4px";
+    element.style.borderRadius = "10px";
+    element.style.fontSize = "0.8rem";
+    element.style.border = success
+        ? "1px solid rgba(22, 199, 154, 0.25)"
+        : "1px solid rgba(255, 100, 100, 0.3)";
+    element.style.background = success
+        ? "rgba(22, 199, 154, 0.07)"
+        : "rgba(255, 100, 100, 0.07)";
+    element.style.color = "#b7c5d3";
+    element.innerHTML = `<i class="fa-solid ${success ? "fa-circle-check" : "fa-circle-exclamation"}"></i><span></span>`;
+    element.querySelector("span").textContent = message;
+    form.appendChild(element);
+}
 
 function initializeCounters() {
+    const counters = document.querySelectorAll("[data-counter]");
+    if (!counters.length) return;
 
-    const counters =
-        document.querySelectorAll(
-            "[data-counter]"
-        );
+    const showFinalValues = () => counters.forEach(setCounterFinalValue);
 
-
-    if (!counters.length) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        showFinalValues();
         return;
     }
 
-
-    const prefersReducedMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
-
-
-    /*
-     * If reduced motion is enabled,
-     * show final values immediately.
-     */
-
-    if (prefersReducedMotion) {
-
-        counters.forEach((counter) => {
-
-            setCounterFinalValue(counter);
-
+    const observer = new IntersectionObserver((entries, observerInstance) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            animateCounter(entry.target);
+            observerInstance.unobserve(entry.target);
         });
+    }, { threshold: 0.5 });
 
-        return;
-    }
-
-
-    const counterObserver =
-        new IntersectionObserver(
-            (entries, observer) => {
-
-                entries.forEach((entry) => {
-
-                    if (
-                        !entry.isIntersecting
-                    ) {
-
-                        return;
-
-                    }
-
-
-                    animateCounter(
-                        entry.target
-                    );
-
-
-                    observer.unobserve(
-                        entry.target
-                    );
-
-                });
-
-            },
-            {
-                threshold: 0.5
-            }
-        );
-
-
-    counters.forEach((counter) => {
-
-        counterObserver.observe(counter);
-
-    });
-
+    counters.forEach((counter) => observer.observe(counter));
 }
-
-
-/* =========================================================
-   COUNTER ANIMATION
-   ========================================================= */
-
-function animateCounter(counter) {
-
-    const target =
-        parseFloat(
-            counter.dataset.counter
-        );
-
-
-    if (Number.isNaN(target)) {
-        return;
-    }
-
-
-    const duration =
-        parseInt(
-            counter.dataset.duration || "1800",
-            10
-        );
-
-
-    const prefix =
-        counter.dataset.prefix || "";
-
-
-    const suffix =
-        counter.dataset.suffix || "";
-
-
-    const decimals =
-        parseInt(
-            counter.dataset.decimals || "0",
-            10
-        );
-
-
-    const startTime =
-        performance.now();
-
-
-    const update =
-        (currentTime) => {
-
-            const elapsed =
-                currentTime -
-                startTime;
-
-
-            const progress =
-                Math.min(
-                    elapsed / duration,
-                    1
-                );
-
-
-            /*
-             * Ease-out curve.
-             */
-
-            const easedProgress =
-                1 -
-                Math.pow(
-                    1 - progress,
-                    3
-                );
-
-
-            const currentValue =
-                target *
-                easedProgress;
-
-
-            counter.textContent =
-                prefix +
-                currentValue.toLocaleString(
-                    "en-IN",
-                    {
-                        minimumFractionDigits:
-                            decimals,
-
-                        maximumFractionDigits:
-                            decimals
-                    }
-                ) +
-                suffix;
-
-
-            if (progress < 1) {
-
-                requestAnimationFrame(
-                    update
-                );
-
-            }
-
-        };
-
-
-    requestAnimationFrame(
-        update
-    );
-
-}
-
-
-/* =========================================================
-   COUNTER FINAL VALUE
-   ========================================================= */
 
 function setCounterFinalValue(counter) {
+    const target = parseFloat(counter.dataset.counter);
+    if (Number.isNaN(target)) return;
 
-    const target =
-        parseFloat(
-            counter.dataset.counter
-        );
+    const prefix = counter.dataset.prefix || "";
+    const suffix = counter.dataset.suffix || "";
+    const decimals = parseInt(counter.dataset.decimals || "0", 10);
 
-
-    if (Number.isNaN(target)) {
-        return;
-    }
-
-
-    const prefix =
-        counter.dataset.prefix || "";
-
-
-    const suffix =
-        counter.dataset.suffix || "";
-
-
-    const decimals =
-        parseInt(
-            counter.dataset.decimals || "0",
-            10
-        );
-
-
-    counter.textContent =
-        prefix +
-        target.toLocaleString(
-            "en-IN",
-            {
-                minimumFractionDigits:
-                    decimals,
-
-                maximumFractionDigits:
-                    decimals
-            }
-        ) +
-        suffix;
-
+    counter.textContent = prefix + target.toLocaleString("en-IN", {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+    }) + suffix;
 }
 
+function animateCounter(counter) {
+    const target = parseFloat(counter.dataset.counter);
+    if (Number.isNaN(target)) return;
 
-/* =========================================================
-   10. ESC KEY
-   ========================================================= */
+    const duration = parseInt(counter.dataset.duration || "1800", 10);
+    const prefix = counter.dataset.prefix || "";
+    const suffix = counter.dataset.suffix || "";
+    const decimals = parseInt(counter.dataset.decimals || "0", 10);
+    const startTime = performance.now();
 
-document.addEventListener(
-    "keydown",
-    (event) => {
+    const update = (currentTime) => {
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = target * eased;
 
-        if (
-            event.key !== "Escape"
-        ) {
+        counter.textContent = prefix + value.toLocaleString("en-IN", {
+            minimumFractionDigits: decimals,
+            maximumFractionDigits: decimals
+        }) + suffix;
 
-            return;
-
+        if (progress < 1) {
+            requestAnimationFrame(update);
         }
+    };
 
-
-        const navigation =
-            document.getElementById(
-                "mainNavigation"
-            );
-
-
-        const menuButton =
-            document.getElementById(
-                "mobileMenuButton"
-            );
-
-
-        if (
-            !navigation ||
-            !menuButton
-        ) {
-
-            return;
-
-        }
-
-
-        navigation.classList.remove(
-            "open"
-        );
-
-
-        menuButton.setAttribute(
-            "aria-expanded",
-            "false"
-        );
-
-
-        menuButton.setAttribute(
-            "aria-label",
-            "Open navigation menu"
-        );
-
-
-        const icon =
-            menuButton.querySelector("i");
-
-
-        if (icon) {
-
-            icon.classList.remove(
-                "fa-xmark"
-            );
-
-            icon.classList.add(
-                "fa-bars"
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   11. WINDOW RESIZE
-   ========================================================= */
-
-window.addEventListener(
-    "resize",
-    () => {
-
-        /*
-         * If the user rotates a phone or expands the
-         * browser beyond the mobile breakpoint,
-         * make sure the mobile menu doesn't remain open.
-         */
-
-        if (
-            window.innerWidth > 820
-        ) {
-
-            const navigation =
-                document.getElementById(
-                    "mainNavigation"
-                );
-
-
-            const menuButton =
-                document.getElementById(
-                    "mobileMenuButton"
-                );
-
-
-            if (
-                navigation &&
-                menuButton
-            ) {
-
-                navigation.classList.remove(
-                    "open"
-                );
-
-
-                menuButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-
-                const icon =
-                    menuButton.querySelector("i");
-
-
-                if (icon) {
-
-                    icon.classList.remove(
-                        "fa-xmark"
-                    );
-
-                    icon.classList.add(
-                        "fa-bars"
-                    );
-
-                }
-
-            }
-
-        }
-
-    },
-    {
-        passive: true
-    }
-);
+    requestAnimationFrame(update);
+}
