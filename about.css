@@ -1,0 +1,11 @@
+/* About page typography override */
+
+.hero-content h1 {
+    font-size: clamp(2.9rem, 5vw, 5rem);
+}
+
+@media (max-width: 600px) {
+    .hero-content h1 {
+        font-size: clamp(2.35rem, 10vw, 3.4rem);
+    }
+}
