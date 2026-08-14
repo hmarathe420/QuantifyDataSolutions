@@ -2810,16 +2810,21 @@ body.mobile-menu-open {
 }
 
 
-
-
     .main-navigation > a:not(.nav-contact-button) {
 
-        padding:
-            12px 10px;
+    width: 100%;
 
-    }
+    min-height: 48px;
 
+    display: flex;
 
+    align-items: center;
+
+    padding: 14px 12px;
+
+    border-radius: 8px;
+
+}
     .main-navigation > a:not(.nav-contact-button)::after {
 
         display: none;
@@ -2829,9 +2834,15 @@ body.mobile-menu-open {
 
     .nav-contact-button {
 
-        margin-top: 6px;
+    width: 100%;
 
-    }
+    min-height: 48px;
+
+    justify-content: center;
+
+    margin-top: 8px;
+
+}
 
 
     .hero-container {
