@@ -3012,13 +3012,10 @@ body.mobile-menu-open {
 
     }
 
+   .hero-image-wrapper {
 
-    .hero-image-wrapper,
-    .hero-image-wrapper img {
-
-        min-height: 370px;
-
-    }
+    height: 370px;
+   }
 
 
     .hero-image-content {
