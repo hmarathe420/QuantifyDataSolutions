@@ -1,5 +1,5 @@
-/* Homepage footer: logo sits clearly above the three equally aligned columns. */
-.site-footer .footer-logo{display:flex;justify-content:center;align-items:center;width:100%;margin:0 0 42px;position:relative;top:-8px}
+/* Homepage footer: logo on the left, clearly above the three equally aligned columns. */
+.site-footer .footer-logo{display:flex;justify-content:flex-start;align-items:center;width:100%;margin:0 0 42px;position:relative;top:-8px}
 .site-footer .footer-logo .brand{display:inline-flex;align-items:center;gap:10px}
 .site-footer .footer-logo .brand-logo{width:44px;height:44px;object-fit:contain}
 .site-footer .footer-logo .brand-name{font-size:1.1rem}
