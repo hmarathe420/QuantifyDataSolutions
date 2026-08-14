@@ -36,30 +36,23 @@ document.addEventListener("DOMContentLoaded", () => {
    ========================================================= */
 
 function initializeMobileMenu() {
-
-    const menuButton =
-        document.getElementById("mobileMenuButton");
-
-    const navigation =
-        document.getElementById("mainNavigation");
-
+    const menuButton = document.getElementById("mobileMenuButton");
+    const navigation = document.getElementById("mainNavigation");
 
     if (!menuButton || !navigation) {
         return;
     }
 
+    const icon = menuButton.querySelector("i");
 
-    menuButton.addEventListener("click", () => {
-
-        const isOpen =
-            navigation.classList.toggle("open");
-
+    function setMenuState(isOpen) {
+        navigation.classList.toggle("open", isOpen);
+        document.body.classList.toggle("mobile-menu-open", isOpen);
 
         menuButton.setAttribute(
             "aria-expanded",
             String(isOpen)
         );
-
 
         menuButton.setAttribute(
             "aria-label",
@@ -68,13 +61,7 @@ function initializeMobileMenu() {
                 : "Open navigation menu"
         );
 
-
-        const icon =
-            menuButton.querySelector("i");
-
-
         if (icon) {
-
             icon.classList.toggle(
                 "fa-bars",
                 !isOpen
@@ -84,10 +71,63 @@ function initializeMobileMenu() {
                 "fa-xmark",
                 isOpen
             );
+        }
+    }
 
+    function closeMenu() {
+        setMenuState(false);
+        menuButton.focus();
+    }
+
+    menuButton.addEventListener("click", () => {
+        const isOpen =
+            navigation.classList.contains("open");
+
+        setMenuState(!isOpen);
+    });
+
+    navigation
+        .querySelectorAll("a")
+        .forEach((link) => {
+            link.addEventListener("click", () => {
+                setMenuState(false);
+            });
+        });
+
+    document.addEventListener("click", (event) => {
+        const clickedInsideNavigation =
+            navigation.contains(event.target);
+
+        const clickedMenuButton =
+            menuButton.contains(event.target);
+
+        if (
+            navigation.classList.contains("open") &&
+            !clickedInsideNavigation &&
+            !clickedMenuButton
+        ) {
+            closeMenu();
+        }
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") {
+            return;
         }
 
+        if (!navigation.classList.contains("open")) {
+            return;
+        }
+
+        closeMenu();
     });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 900) {
+            setMenuState(false);
+        }
+    });
+}
 
 
     /*
