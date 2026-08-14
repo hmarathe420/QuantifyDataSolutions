@@ -2967,6 +2967,14 @@ body.mobile-menu-open {
         1fr;
 
 }
+   .service-card {
+
+    min-height: 0;
+
+    padding: 26px;
+
+}
+   
 
 
     .hero-section {
