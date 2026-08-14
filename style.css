@@ -2868,13 +2868,12 @@ body.mobile-menu-open {
 
     }
 
+   .hero-image-wrapper {
 
-    .hero-image-wrapper,
-    .hero-image-wrapper img {
+    height: 460px;
+   }
 
-        min-height: 460px;
 
-    }
 
 
     .why-grid {
