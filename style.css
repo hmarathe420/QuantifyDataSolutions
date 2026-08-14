@@ -2960,6 +2960,13 @@ body.mobile-menu-open {
             80px 0;
 
     }
+   
+   .services-grid {
+
+    grid-template-columns:
+        1fr;
+
+}
 
 
     .hero-section {
