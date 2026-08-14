@@ -2808,6 +2808,10 @@ body.mobile-menu-open {
         translateY(0);
 
 }
+   
+   body.mobile-menu-open {
+    overflow: hidden;
+}
 
 
     .main-navigation > a:not(.nav-contact-button) {
