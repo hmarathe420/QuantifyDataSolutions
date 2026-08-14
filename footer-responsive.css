@@ -1,19 +1,25 @@
 /* =========================================================
    QDS — SHARED RESPONSIVE FOOTER
-   Three columns on desktop and mobile:
+   Exactly three columns on every screen:
    Company | Services | Contact
    ========================================================= */
 
 .site-footer .footer-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 48px;
-    align-items: start;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 48px !important;
+    align-items: start !important;
 }
 
-/* Keep the brand/description as the Company column. */
 .site-footer .footer-company {
     min-width: 0;
+    grid-column: auto !important;
+}
+
+/* Footer markup contains: Company block, old Company links, Services, Contact.
+   Hide only the old Company-links block so the visible footer is exactly 3 columns. */
+.site-footer .footer-grid > .footer-column:nth-child(2) {
+    display: none !important;
 }
 
 .site-footer .footer-company::before {
@@ -24,11 +30,6 @@
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.16em;
-}
-
-/* The old duplicate Company link column is removed so the footer is exactly 3 columns. */
-.site-footer .footer-grid > .footer-column:first-of-type {
-    display: none;
 }
 
 .site-footer .footer-company .brand {
@@ -43,6 +44,7 @@
 
 .site-footer .footer-column {
     min-width: 0;
+    grid-column: auto !important;
 }
 
 .site-footer .footer-column h4 {
@@ -66,11 +68,12 @@
     color: #ffffff;
 }
 
-/* Mobile intentionally remains three columns, as requested. */
+/* Keep the exact same three-column structure on phones. */
 @media (max-width: 700px) {
     .site-footer .footer-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 14px !important;
     }
 
     .site-footer .footer-company::before,
@@ -115,7 +118,7 @@
 
 @media (max-width: 380px) {
     .site-footer .footer-grid {
-        gap: 9px;
+        gap: 9px !important;
     }
 
     .site-footer .footer-company .brand-name {
