@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeCurrentYear();
     initializeContactForm();
     initializeCounters();
-}
+});
 
 function initializeMobileMenu() {
     const menuButton = document.getElementById("mobileMenuButton");
