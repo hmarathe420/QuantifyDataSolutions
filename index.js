@@ -9,7 +9,18 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeCurrentYear();
     initializeContactForm();
     initializeCounters();
+    initializeSharedFooterStyles();
 });
+
+function initializeSharedFooterStyles() {
+    if (!document.querySelector(".site-footer")) return;
+    if (document.querySelector('link[data-footer-responsive="true"]')) return;
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "footer-responsive.css?v=20260815-footer";
+    link.dataset.footerResponsive = "true";
+    document.head.appendChild(link);
+}
 
 function initializeMobileMenu() {
     const menuButton = document.getElementById("mobileMenuButton");
