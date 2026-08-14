@@ -15,7 +15,6 @@ function initializeMobileMenu() {
     const menuButton = document.getElementById("mobileMenuButton");
     const navigation = document.getElementById("mainNavigation");
     if (!menuButton || !navigation) return;
-
     const icon = menuButton.querySelector("i");
     const setMenuState = (isOpen) => {
         navigation.classList.toggle("open", isOpen);
@@ -27,32 +26,17 @@ function initializeMobileMenu() {
             icon.classList.toggle("fa-xmark", isOpen);
         }
     };
-
-    menuButton.addEventListener("click", () => {
-        setMenuState(!navigation.classList.contains("open"));
-    });
-
-    navigation.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => setMenuState(false));
-    });
-
+    menuButton.addEventListener("click", () => setMenuState(!navigation.classList.contains("open")));
+    navigation.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenuState(false)));
     document.addEventListener("click", (event) => {
-        if (
-            navigation.classList.contains("open") &&
-            !navigation.contains(event.target) &&
-            !menuButton.contains(event.target)
-        ) {
-            setMenuState(false);
-        }
+        if (navigation.classList.contains("open") && !navigation.contains(event.target) && !menuButton.contains(event.target)) setMenuState(false);
     });
-
     document.addEventListener("keydown", (event) => {
         if (event.key === "Escape" && navigation.classList.contains("open")) {
             setMenuState(false);
             menuButton.focus();
         }
     });
-
     window.addEventListener("resize", () => {
         if (window.innerWidth > 820) setMenuState(false);
     });
@@ -61,7 +45,6 @@ function initializeMobileMenu() {
 function initializeStickyHeader() {
     const header = document.getElementById("siteHeader");
     if (!header) return;
-
     const update = () => header.classList.toggle("scrolled", window.scrollY > 30);
     update();
     window.addEventListener("scroll", update, { passive: true });
@@ -70,12 +53,10 @@ function initializeStickyHeader() {
 function initializeScrollReveal() {
     const elements = document.querySelectorAll(".reveal");
     if (!elements.length) return;
-
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         elements.forEach((element) => element.classList.add("visible"));
         return;
     }
-
     const observer = new IntersectionObserver((entries, observerInstance) => {
         entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
@@ -83,7 +64,6 @@ function initializeScrollReveal() {
             observerInstance.unobserve(entry.target);
         });
     }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-
     elements.forEach((element) => observer.observe(element));
 }
 
@@ -92,10 +72,8 @@ function initializeSmoothScrolling() {
         link.addEventListener("click", (event) => {
             const targetId = link.getAttribute("href");
             if (!targetId || targetId === "#") return;
-
             const target = document.querySelector(targetId);
             if (!target) return;
-
             event.preventDefault();
             const header = document.querySelector(".site-header");
             const headerHeight = header ? header.offsetHeight : 0;
@@ -129,10 +107,8 @@ function initializeContactForm() {
 
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
-
         const submitButton = form.querySelector("button[type=\"submit\"]");
         const originalButtonHTML = submitButton ? submitButton.innerHTML : "";
-
         clearFormMessage(form);
 
         if (!form.checkValidity()) {
@@ -151,26 +127,19 @@ function initializeContactForm() {
                 body: new FormData(form),
                 headers: { "Accept": "application/json" }
             });
-
             let result = {};
             try {
                 result = await response.json();
-            } catch (_) {
-                result = {};
-            }
+            } catch (_) {}
 
             if (!response.ok || !result.success) {
                 throw new Error(result.message || "We could not send your inquiry right now.");
             }
 
-            showFormMessage(form, result.message, true);
+            showFormMessage(form, "Thank you. Your inquiry has been sent successfully. Our team will get back to you soon.", true);
             form.reset();
         } catch (error) {
-            showFormMessage(
-                form,
-                error.message || "We could not send your inquiry right now. Please email info@quantifydatasolutions.in directly.",
-                false
-            );
+            showFormMessage(form, error.message || "We could not send your inquiry right now. Please email info@quantifydatasolutions.in directly.", false);
         } finally {
             if (submitButton) {
                 submitButton.disabled = false;
@@ -189,7 +158,6 @@ function clearFormMessage(form) {
 
 function showFormMessage(form, message, success) {
     clearFormMessage(form);
-
     const element = document.createElement("div");
     element.className = success ? "form-success-message" : "form-error-message";
     element.setAttribute("role", success ? "status" : "alert");
@@ -200,12 +168,8 @@ function showFormMessage(form, message, success) {
     element.style.marginTop = "4px";
     element.style.borderRadius = "10px";
     element.style.fontSize = "0.8rem";
-    element.style.border = success
-        ? "1px solid rgba(22, 199, 154, 0.25)"
-        : "1px solid rgba(255, 100, 100, 0.3)";
-    element.style.background = success
-        ? "rgba(22, 199, 154, 0.07)"
-        : "rgba(255, 100, 100, 0.07)";
+    element.style.border = success ? "1px solid rgba(22, 199, 154, 0.25)" : "1px solid rgba(255, 100, 100, 0.3)";
+    element.style.background = success ? "rgba(22, 199, 154, 0.07)" : "rgba(255, 100, 100, 0.07)";
     element.style.color = "#b7c5d3";
     element.innerHTML = `<i class="fa-solid ${success ? "fa-circle-check" : "fa-circle-exclamation"}"></i><span></span>`;
     element.querySelector("span").textContent = message;
@@ -215,14 +179,11 @@ function showFormMessage(form, message, success) {
 function initializeCounters() {
     const counters = document.querySelectorAll("[data-counter]");
     if (!counters.length) return;
-
     const showFinalValues = () => counters.forEach(setCounterFinalValue);
-
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         showFinalValues();
         return;
     }
-
     const observer = new IntersectionObserver((entries, observerInstance) => {
         entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
@@ -230,48 +191,32 @@ function initializeCounters() {
             observerInstance.unobserve(entry.target);
         });
     }, { threshold: 0.5 });
-
     counters.forEach((counter) => observer.observe(counter));
 }
 
 function setCounterFinalValue(counter) {
     const target = parseFloat(counter.dataset.counter);
     if (Number.isNaN(target)) return;
-
     const prefix = counter.dataset.prefix || "";
     const suffix = counter.dataset.suffix || "";
     const decimals = parseInt(counter.dataset.decimals || "0", 10);
-
-    counter.textContent = prefix + target.toLocaleString("en-IN", {
-        minimumFractionDigits: decimals,
-        maximumFractionDigits: decimals
-    }) + suffix;
+    counter.textContent = prefix + target.toLocaleString("en-IN", { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) + suffix;
 }
 
 function animateCounter(counter) {
     const target = parseFloat(counter.dataset.counter);
     if (Number.isNaN(target)) return;
-
     const duration = parseInt(counter.dataset.duration || "1800", 10);
     const prefix = counter.dataset.prefix || "";
     const suffix = counter.dataset.suffix || "";
     const decimals = parseInt(counter.dataset.decimals || "0", 10);
     const startTime = performance.now();
-
     const update = (currentTime) => {
         const progress = Math.min((currentTime - startTime) / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
         const value = target * eased;
-
-        counter.textContent = prefix + value.toLocaleString("en-IN", {
-            minimumFractionDigits: decimals,
-            maximumFractionDigits: decimals
-        }) + suffix;
-
-        if (progress < 1) {
-            requestAnimationFrame(update);
-        }
+        counter.textContent = prefix + value.toLocaleString("en-IN", { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) + suffix;
+        if (progress < 1) requestAnimationFrame(update);
     };
-
     requestAnimationFrame(update);
 }
