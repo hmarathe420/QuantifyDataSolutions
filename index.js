@@ -9,7 +9,18 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeCurrentYear();
     initializeContactForm();
     initializeCounters();
+    initializeFooterStyles();
 });
+
+function initializeFooterStyles() {
+    if (document.querySelector('link[data-footer-styles]')) return;
+
+    const stylesheet = document.createElement("link");
+    stylesheet.rel = "stylesheet";
+    stylesheet.href = "footer.css?v=20260814-footer";
+    stylesheet.dataset.footerStyles = "true";
+    document.head.appendChild(stylesheet);
+}
 
 function initializeMobileMenu() {
     const menuButton = document.getElementById("mobileMenuButton");
