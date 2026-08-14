@@ -17,7 +17,7 @@ function initializeSharedFooterStyles() {
     if (document.querySelector('link[data-footer-responsive="true"]')) return;
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "footer-responsive.css?v=20260815-footer";
+    link.href = "footer-responsive.css?v=20260816-footer-final";
     link.dataset.footerResponsive = "true";
     document.head.appendChild(link);
 }
@@ -115,47 +115,24 @@ function initializeCurrentYear() {
 function initializeContactForm() {
     const form = document.getElementById("contactForm");
     if (!form) return;
-
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
         const submitButton = form.querySelector("button[type=\"submit\"]");
         const originalButtonHTML = submitButton ? submitButton.innerHTML : "";
         clearFormMessage(form);
-
-        if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
-        }
-
-        if (submitButton) {
-            submitButton.disabled = true;
-            submitButton.innerHTML = 'Sending Inquiry <i class="fa-solid fa-spinner fa-spin"></i>';
-        }
-
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        if (submitButton) { submitButton.disabled = true; submitButton.innerHTML = 'Sending Inquiry <i class="fa-solid fa-spinner fa-spin"></i>'; }
         try {
-            const response = await fetch("contact-handler.php", {
-                method: "POST",
-                body: new FormData(form),
-                headers: { "Accept": "application/json" }
-            });
+            const response = await fetch("contact-handler.php", { method: "POST", body: new FormData(form), headers: { "Accept": "application/json" } });
             let result = {};
-            try {
-                result = await response.json();
-            } catch (_) {}
-
-            if (!response.ok || !result.success) {
-                throw new Error(result.message || "We could not send your inquiry right now.");
-            }
-
+            try { result = await response.json(); } catch (_) {}
+            if (!response.ok || !result.success) throw new Error(result.message || "We could not send your inquiry right now.");
             showFormMessage(form, "Thank you. Your inquiry has been sent successfully. Our team will get back to you soon.", true);
             form.reset();
         } catch (error) {
             showFormMessage(form, error.message || "We could not send your inquiry right now. Please email info@quantifydatasolutions.in directly.", false);
         } finally {
-            if (submitButton) {
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalButtonHTML;
-            }
+            if (submitButton) { submitButton.disabled = false; submitButton.innerHTML = originalButtonHTML; }
         }
     });
 }
@@ -191,10 +168,7 @@ function initializeCounters() {
     const counters = document.querySelectorAll("[data-counter]");
     if (!counters.length) return;
     const showFinalValues = () => counters.forEach(setCounterFinalValue);
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        showFinalValues();
-        return;
-    }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { showFinalValues(); return; }
     const observer = new IntersectionObserver((entries, observerInstance) => {
         entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
