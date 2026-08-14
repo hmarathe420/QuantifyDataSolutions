@@ -495,11 +495,10 @@ body.mobile-menu-open {
 
     position: relative;
 
-    min-height:
-        100vh;
+    min-height: 100svh;
 
     padding:
-        150px 0 100px;
+        128px 0 80px;
 
     display: flex;
 
@@ -508,7 +507,6 @@ body.mobile-menu-open {
     overflow: hidden;
 
 }
-
 
 .hero-section::before {
 
