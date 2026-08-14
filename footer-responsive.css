@@ -1,9 +1,9 @@
 /* QDS SHARED FOOTER — logo truly separate above Company | Services | Contact */
 .site-footer .footer-grid{position:relative!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;grid-template-rows:auto!important;column-gap:clamp(24px,5vw,64px)!important;row-gap:16px!important;align-items:start!important;padding-top:78px!important}
-/* The logo is visually removed from the first column and placed in a full-width top area. */
 .site-footer .footer-company{display:block!important;grid-column:1!important;grid-row:1!important;min-width:0!important}
 .site-footer .footer-company .brand{position:absolute!important;top:0!important;left:50%!important;transform:translateX(-50%)!important;display:inline-flex!important;align-items:center!important;width:max-content!important;margin:0!important;gap:10px!important;z-index:2!important}
-.site-footer .footer-company p{margin:0!important;max-width:340px;font-size:.82rem;line-height:1.7;color:var(--text-soft)}
+/* Company description intentionally removed from the footer. */
+.site-footer .footer-company p{display:none!important}
 .site-footer .footer-grid>.footer-column:nth-child(2){display:block!important;grid-column:1!important;grid-row:1!important;min-width:0!important}
 .site-footer .footer-grid>.footer-column:nth-child(3){grid-column:2!important;grid-row:1!important;min-width:0!important}
 .site-footer .footer-grid>.footer-column:nth-child(4){grid-column:3!important;grid-row:1!important;min-width:0!important}
@@ -16,7 +16,7 @@
 @media(max-width:700px){
 .site-footer .footer-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;column-gap:12px!important;row-gap:10px!important;padding-top:62px!important}
 .site-footer .footer-company .brand{top:0!important;left:50%!important;transform:translateX(-50%)!important;gap:7px!important}
-.site-footer .footer-company p{max-width:none;font-size:.64rem;line-height:1.5}
+.site-footer .footer-company p{display:none!important}
 .site-footer .footer-grid>.footer-column:nth-child(2){grid-column:1!important;grid-row:1!important}
 .site-footer .footer-grid>.footer-column:nth-child(3){grid-column:2!important;grid-row:1!important}
 .site-footer .footer-grid>.footer-column:nth-child(4){grid-column:3!important;grid-row:1!important}
