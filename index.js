@@ -9,17 +9,58 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeCurrentYear();
     initializeContactForm();
     initializeCounters();
-    initializeSharedFooterStyles();
+    initializeSitewideFooter();
 });
 
-function initializeSharedFooterStyles() {
-    if (!document.querySelector(".site-footer")) return;
-    if (document.querySelector('link[data-footer-responsive="true"]')) return;
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = "footer-responsive.css?v=20260816-footer-final";
-    link.dataset.footerResponsive = "true";
-    document.head.appendChild(link);
+function initializeSitewideFooter() {
+    const footer = document.querySelector(".site-footer");
+    if (!footer) return;
+
+    const footerContainer = footer.querySelector(".container");
+    if (!footerContainer) return;
+
+    /* Use the exact homepage footer markup on every page. */
+    footerContainer.innerHTML = `
+        <div class="footer-logo">
+            <a href="index.html" class="brand" aria-label="Quantify Data Solutions home">
+                <img src="Images/QDS Logo.png" alt="Quantify Data Solutions logo" class="brand-logo">
+                <div class="brand-name">Quantify <span>DATA SOLUTIONS</span></div>
+            </a>
+        </div>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h4>COMPANY</h4>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-column">
+                <h4>SERVICES</h4>
+                <a href="services.html#sports-data-details">Sports Data</a>
+                <a href="services.html#video-details">Video Annotation</a>
+                <a href="services.html#ai-details">AI & ML Data</a>
+                <a href="services.html#software-details">Technology</a>
+            </div>
+            <div class="footer-column">
+                <h4>CONTACT</h4>
+                <a href="mailto:info@quantifydatasolutions.in">info@quantifydatasolutions.in</a>
+                <span>Nashik, Maharashtra, India</span>
+                <a href="contact.html">Start a conversation</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span id="currentYear"></span> Quantify Data Solutions. All rights reserved.</span>
+            <span>Built for data-driven businesses.</span>
+        </div>`;
+
+    if (!document.querySelector('link[data-footer-sitewide="true"]')) {
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = "homepage-footer.css?v=20260816-sitewide";
+        link.dataset.footerSitewide = "true";
+        document.head.appendChild(link);
+    }
 }
 
 function initializeMobileMenu() {
