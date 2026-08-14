@@ -400,6 +400,10 @@ p {
 
 }
 
+body.mobile-menu-open {
+    overflow: hidden;
+}
+
 
 .nav-contact-button {
 
