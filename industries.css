@@ -1,0 +1,198 @@
+/* =========================================================
+   INDUSTRIES — FEATURE ROW INTERFACE
+   Matches the clean Why Quantify feature treatment.
+   ========================================================= */
+
+.industries-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.industry-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    max-width: 980px;
+    margin-inline: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.industry-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 58px minmax(0, 1fr) 24px;
+    align-items: center;
+    gap: 22px;
+    min-height: 118px;
+    padding: 24px 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: transparent;
+    color: inherit;
+    transition: background 0.3s ease, padding 0.3s ease;
+}
+
+.industry-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 -18px;
+    z-index: -1;
+    border: 1px solid transparent;
+    border-radius: 16px;
+    background: linear-gradient(100deg, rgba(255,255,255,0.035), rgba(22,199,154,0.035));
+    opacity: 0;
+    transform: scaleY(0.86);
+    transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.industry-card:hover::before {
+    opacity: 1;
+    transform: scaleY(1);
+    border-color: rgba(22, 199, 154, 0.14);
+}
+
+.industry-card-top {
+    display: contents;
+}
+
+.industry-number {
+    grid-column: 1;
+    grid-row: 1;
+    color: rgba(255, 255, 255, 0.35);
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-align: center;
+}
+
+.industry-icon {
+    grid-column: 1;
+    grid-row: 1;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(22, 199, 154, 0.16);
+    border-radius: 14px;
+    background: rgba(22, 199, 154, 0.07);
+    color: var(--primary);
+    font-size: 1.05rem;
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.industry-number {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.industry-card-content {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+}
+
+.industry-card h3 {
+    margin-bottom: 5px;
+    color: #fff;
+    font-size: 1.18rem;
+    letter-spacing: -0.02em;
+}
+
+.industry-card p {
+    max-width: 720px;
+    font-size: 0.88rem;
+    line-height: 1.65;
+}
+
+.industry-card-footer {
+    grid-column: 3;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 0;
+}
+
+.industry-card-footer i {
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.industry-card-glow {
+    display: none;
+}
+
+.industry-card:hover {
+    transform: none;
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+}
+
+.industry-card:hover .industry-icon {
+    transform: translateX(3px);
+    background: rgba(22, 199, 154, 0.13);
+    border-color: rgba(22, 199, 154, 0.32);
+}
+
+.industry-card:hover .industry-card-footer i {
+    transform: translateX(5px);
+}
+
+.industry-card:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+    border-radius: 12px;
+}
+
+@media (max-width: 700px) {
+    .industry-grid {
+        max-width: none;
+    }
+
+    .industry-card {
+        grid-template-columns: 48px minmax(0, 1fr) 20px;
+        gap: 16px;
+        min-height: 104px;
+        padding: 20px 0;
+    }
+
+    .industry-card::before {
+        inset: 0 -10px;
+    }
+
+    .industry-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        font-size: 0.95rem;
+    }
+
+    .industry-card h3 {
+        font-size: 1.08rem;
+    }
+
+    .industry-card p {
+        font-size: 0.8rem;
+        line-height: 1.6;
+    }
+}
+
+@media (max-width: 430px) {
+    .industry-card {
+        grid-template-columns: 44px minmax(0, 1fr) 16px;
+        gap: 13px;
+        padding: 18px 0;
+    }
+
+    .industry-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .industry-card p {
+        font-size: 0.77rem;
+    }
+}
