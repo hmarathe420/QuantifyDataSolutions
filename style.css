@@ -1325,6 +1325,450 @@ body.mobile-menu-open {
 
 }
 
+/* =========================================================
+   08B. INDUSTRIES
+   ========================================================= */
+
+.industries-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.industries-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    top: 10%;
+    left: -300px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(22, 199, 154, 0.07),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+/* ---------------------------------------------------------
+   INDUSTRY GRID
+   --------------------------------------------------------- */
+
+.industry-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+
+/* ---------------------------------------------------------
+   INDUSTRY CARD
+   --------------------------------------------------------- */
+
+.industry-card {
+    position: relative;
+
+    min-height: 310px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 30px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        var(--radius-md);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.018)
+        );
+
+    color: inherit;
+
+    transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
+}
+
+
+/* ---------------------------------------------------------
+   DECORATIVE GLOW
+   --------------------------------------------------------- */
+
+.industry-card-glow {
+    position: absolute;
+
+    width: 230px;
+    height: 230px;
+
+    top: -135px;
+    right: -115px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(22, 199, 154, 0.14),
+            transparent 70%
+        );
+
+    pointer-events: none;
+
+    transition:
+        transform 0.45s ease,
+        opacity 0.45s ease;
+}
+
+
+/* ---------------------------------------------------------
+   TOP ROW
+   --------------------------------------------------------- */
+
+.industry-card-top {
+    position: relative;
+
+    z-index: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 42px;
+}
+
+
+.industry-number {
+    color:
+        rgba(255, 255, 255, 0.38);
+
+    font-family:
+        "Space Grotesk",
+        sans-serif;
+
+    font-size: 0.68rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.13em;
+}
+
+
+/* ---------------------------------------------------------
+   ICON
+   --------------------------------------------------------- */
+
+.industry-icon {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(22, 199, 154, 0.16);
+
+    border-radius:
+        14px;
+
+    background:
+        rgba(22, 199, 154, 0.09);
+
+    color:
+        var(--primary);
+
+    font-size: 1.15rem;
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition);
+}
+
+
+/* ---------------------------------------------------------
+   CONTENT
+   --------------------------------------------------------- */
+
+.industry-card-content {
+    position: relative;
+
+    z-index: 1;
+
+    flex: 1;
+}
+
+
+.industry-card h3 {
+    margin-bottom: 14px;
+
+    color:
+        #ffffff;
+
+    font-size:
+        clamp(
+            1.35rem,
+            2vw,
+            1.7rem
+        );
+
+    letter-spacing:
+        -0.025em;
+}
+
+
+.industry-card p {
+    max-width: 500px;
+
+    font-size: 0.9rem;
+
+    line-height: 1.75;
+}
+
+
+/* ---------------------------------------------------------
+   FOOTER / CTA
+   --------------------------------------------------------- */
+
+.industry-card-footer {
+    position: relative;
+
+    z-index: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 28px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+    color:
+        var(--primary);
+
+    font-size: 0.78rem;
+
+    font-weight: 700;
+}
+
+
+.industry-card-footer i {
+    transition:
+        transform var(--transition);
+}
+
+
+/* ---------------------------------------------------------
+   HOVER
+   --------------------------------------------------------- */
+
+.industry-card:hover {
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(22, 199, 154, 0.34);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(16, 37, 58, 0.95),
+            rgba(13, 29, 45, 0.9)
+        );
+
+    box-shadow:
+        0 20px 55px
+        rgba(0, 0, 0, 0.18);
+}
+
+
+.industry-card:hover .industry-card-glow {
+    transform:
+        scale(1.35);
+
+    opacity:
+        1.15;
+}
+
+
+.industry-card:hover .industry-icon {
+    transform:
+        translateY(-2px);
+
+    background:
+        rgba(22, 199, 154, 0.16);
+
+    border-color:
+        rgba(22, 199, 154, 0.35);
+}
+
+
+.industry-card:hover .industry-card-footer i {
+    transform:
+        translateX(5px);
+}
+
+
+/* ---------------------------------------------------------
+   KEYBOARD ACCESSIBILITY
+   --------------------------------------------------------- */
+
+.industry-card:focus-visible {
+    outline:
+        2px solid
+        var(--primary);
+
+    outline-offset:
+        4px;
+}
+
+
+/* =========================================================
+   INDUSTRIES — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .industry-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 16px;
+    }
+
+    .industry-card {
+        min-height: 300px;
+
+        padding: 26px;
+    }
+
+    .industry-card-top {
+        margin-bottom: 34px;
+    }
+
+}
+
+
+/* =========================================================
+   INDUSTRIES — MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .industry-grid {
+        grid-template-columns:
+            1fr;
+
+        gap: 14px;
+    }
+
+    .industry-card {
+        min-height: 0;
+
+        padding: 24px;
+
+        border-radius:
+            var(--radius-md);
+    }
+
+    .industry-card-top {
+        margin-bottom: 30px;
+    }
+
+    .industry-icon {
+        width: 48px;
+        height: 48px;
+
+        border-radius: 13px;
+    }
+
+    .industry-card h3 {
+        margin-bottom: 11px;
+
+        font-size: 1.35rem;
+    }
+
+    .industry-card p {
+        font-size: 0.86rem;
+
+        line-height: 1.7;
+    }
+
+    .industry-card-footer {
+        margin-top: 24px;
+
+        padding-top: 17px;
+
+        font-size: 0.74rem;
+    }
+
+}
+
+
+/* =========================================================
+   INDUSTRIES — SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .industry-card {
+        padding: 21px;
+    }
+
+    .industry-card-top {
+        margin-bottom: 26px;
+    }
+
+    .industry-icon {
+        width: 45px;
+        height: 45px;
+
+        font-size: 1rem;
+    }
+
+    .industry-card h3 {
+        font-size: 1.25rem;
+    }
+
+    .industry-card p {
+        font-size: 0.82rem;
+    }
+
+}
 
 /* =========================================================
    09. WHY / FEATURE GRID
