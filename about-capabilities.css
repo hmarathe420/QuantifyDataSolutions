@@ -1,0 +1,270 @@
+/* =========================================================
+   ABOUT — CAPABILITIES / PREMIUM GLASS TILES
+   ========================================================= */
+
+.about-capabilities-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.about-capabilities-section .container {
+    position: relative;
+}
+
+.about-capabilities-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.65fr);
+    gap: clamp(40px, 7vw, 110px);
+    align-items: end;
+    margin-bottom: 46px;
+}
+
+.about-capabilities-heading h2 {
+    margin-top: 14px;
+    max-width: 760px;
+    font-size: clamp(2.35rem, 5vw, 4.7rem);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+}
+
+.about-capabilities-heading > p {
+    max-width: 440px;
+    margin: 0 0 4px;
+    color: var(--text-soft);
+    font-size: 0.94rem;
+    line-height: 1.75;
+}
+
+.capability-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    width: 100%;
+    border: 0;
+}
+
+.capability-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) 24px;
+    grid-template-rows: auto auto;
+    column-gap: 18px;
+    row-gap: 22px;
+    min-height: 238px;
+    padding: 25px 26px 24px;
+    border: 1px solid rgba(255,255,255,0.085);
+    border-radius: 24px;
+    background:
+        radial-gradient(circle at 100% 0%, rgba(22,199,154,0.10), transparent 36%),
+        linear-gradient(145deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.045), 0 18px 45px rgba(0,0,0,0.12);
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.capability-row::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.045) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.65s ease;
+}
+
+.capability-row:hover {
+    transform: translateY(-4px);
+    border-color: rgba(22,199,154,0.28);
+    background:
+        radial-gradient(circle at 100% 0%, rgba(22,199,154,0.15), transparent 40%),
+        linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.022));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 24px 55px rgba(0,0,0,0.22);
+}
+
+.capability-row:hover::before {
+    transform: translateX(100%);
+}
+
+.capability-row:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 5px;
+}
+
+.capability-number {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+    color: rgba(255,255,255,0.42);
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    padding-top: 7px;
+}
+
+.capability-icon {
+    grid-column: 2;
+    grid-row: 1;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(22,199,154,0.18);
+    border-radius: 15px;
+    background: rgba(22,199,154,0.07);
+    color: var(--primary);
+    font-size: 0.92rem;
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.capability-row:hover .capability-icon {
+    transform: scale(1.05);
+    background: rgba(22,199,154,0.13);
+    border-color: rgba(22,199,154,0.34);
+}
+
+.capability-arrow {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    align-self: start;
+    margin-top: 9px;
+    color: rgba(255,255,255,0.42);
+    font-size: 0.82rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.capability-row:hover .capability-arrow {
+    color: var(--primary);
+    transform: translate(3px, -3px);
+}
+
+.capability-copy {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    align-self: end;
+}
+
+.capability-copy strong {
+    color: #fff;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+}
+
+.capability-copy small {
+    display: block;
+    max-width: 540px;
+    color: var(--text-soft);
+    font-size: 0.84rem;
+    line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+    .about-capabilities-heading {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 34px;
+    }
+
+    .about-capabilities-heading h2 {
+        max-width: 620px;
+    }
+}
+
+@media (max-width: 700px) {
+    .capability-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .capability-row {
+        grid-template-columns: 28px minmax(0, 1fr) 16px;
+        column-gap: 9px;
+        row-gap: 18px;
+        min-height: 214px;
+        padding: 18px 16px 17px;
+        border-radius: 19px;
+    }
+
+    .capability-number {
+        font-size: 0.61rem;
+        padding-top: 5px;
+    }
+
+    .capability-icon {
+        width: 39px;
+        height: 39px;
+        border-radius: 12px;
+        font-size: 0.76rem;
+    }
+
+    .capability-arrow {
+        margin-top: 7px;
+        font-size: 0.65rem;
+    }
+
+    .capability-copy {
+        gap: 7px;
+    }
+
+    .capability-copy strong {
+        font-size: 0.96rem;
+        line-height: 1.22;
+    }
+
+    .capability-copy small {
+        font-size: 0.71rem;
+        line-height: 1.55;
+    }
+}
+
+@media (max-width: 430px) {
+    .about-capabilities-heading h2 {
+        font-size: 2.25rem;
+        line-height: 1.02;
+    }
+
+    .about-capabilities-heading > p {
+        font-size: 0.82rem;
+        line-height: 1.65;
+    }
+
+    .capability-list {
+        gap: 10px;
+    }
+
+    .capability-row {
+        min-height: 205px;
+        padding: 16px 13px 15px;
+        border-radius: 17px;
+    }
+
+    .capability-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .capability-copy strong {
+        font-size: 0.9rem;
+    }
+
+    .capability-copy small {
+        font-size: 0.68rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .capability-row,
+    .capability-row::before,
+    .capability-icon,
+    .capability-arrow {
+        transition: none;
+    }
+}
